@@ -7,7 +7,6 @@ body{
 	text-decoration: underline;
 }
 .s-bar-total{
-	width: 100%;
 	display: inline-block;
 }
 
@@ -25,7 +24,7 @@ body{
 }
 
 .s-bar{
-	width: 100%;
+	width: 80%;
 	border-radius: 4px;
 	border: 1px solid #B6B6C8;
 	padding: 7px 5px;
