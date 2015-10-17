@@ -1,6 +1,9 @@
 from flask import Flask, jsonify, render_template
+from flask.ext.heroku import heroku
 
 app = Flask(__name__)
+heroku = Heroku(app)
+
 app.config["DEBUG"] = True  # Only include this while you are testing your app
 
 @app.route("/")
