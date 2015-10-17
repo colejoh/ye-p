@@ -9,16 +9,25 @@
 	</script>
 </head>
 <body>
-<script type="text/javascript">
-		var url="https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJN1t_tDeuEmsRUsoyG83frY4&key=AIzaSyCWY8hgOqA2BCs1yEDaxf2Q71w2BsQBPnY";
+	<div id="poop">
+	</div>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWY8hgOqA2BCs1yEDaxf2Q71w2BsQBPnY&libraries=places"></script>
+		<script>
+			var request = {
+			  placeId: 'ChIJN1t_tDeuEmsRUsoyG83frY4'
+			};
+			service = new google.maps.places.PlacesService(document.getElementById('poop'));
+			service.getDetails(request, callback);
 
-		$.getJSON(url, function(data) {
-			rating = data.results.rating;
-			alert("test");
-			alert(rating);
-		})
+			function callback(place, status) {
+			  if (status == google.maps.places.PlacesServiceStatus.OK) {
+			    console.log(place.rating);
+			  }
+			}
+		</script>
+	<!-- <script
+	src="https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJN1t_tDeuEmsRUsoyG83frY4&key=AIzaSyCWY8hgOqA2BCs1yEDaxf2Q71w2BsQBPnY&callback=test" async defer></script> -->
 
-</script>
 	<div class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="row">
@@ -52,7 +61,7 @@
 							<div class="bus-name">Business Name.</div>
 						</div>
 						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-							<div class="bus-rating"><script>result {"ratings"}</script></div>
+							<div class="bus-rating" id="placeholder"></div>
 							<div class="reviews">Out of 114 reviews</div><!-- call number of reviews here -->
 						</div>
 					</div>
