@@ -63,6 +63,20 @@ body{
 	width: 65%;
 }
 
+.result{
+	width: 100%;
+	height: 70px;
+	background-color: #E3285A;
+	border-radius: 4px; 
+	color: white;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.pad{
+	padding: 10px 0;
+}
+
 @media screen and (min-width: 901px){
 	.graph{
 		width: 75%;
