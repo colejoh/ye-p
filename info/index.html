@@ -22,8 +22,10 @@
 			function callback(place, status) {
 			  if (status == google.maps.places.PlacesServiceStatus.OK) {
 			    console.log(place.rating);
+					$(".bus-rating").text(place.rating);
 			  }
 			}
+
 		</script>
 	</div>
 
@@ -89,7 +91,7 @@
 							<div class="bus-name">Business Name.</div>
 						</div>
 						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-							<div class="bus-rating" id="placeholder"></div>
+							<div class="bus-rating"></div>
 							<div class="reviews">Out of 114 reviews</div><!-- call number of reviews here -->
 						</div>
 					</div>
