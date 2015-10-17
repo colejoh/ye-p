@@ -8,6 +8,7 @@ body{
 }
 .s-bar-total{
 	display: inline-block;
+	width: 100%;
 }
 
 .branding{
