@@ -8,96 +8,16 @@
 	<script src='../script/Chart.js-master/Chart.js'></script>
 	<script src='../script/moment.js'></script>
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWY8hgOqA2BCs1yEDaxf2Q71w2BsQBPnY&libraries=places"></script>
+	<script type="text/javascript" src="../script/googleAPI.js"></script>
+
+	</script>"
 	<link rel="stylesheet" href="../css/info-1.css">
 </head>
 <body>
 	<div id="poop">
 	</div>
 	<script>
-		$(document).ready(function() {
-		$.getJSON("http://www.telize.com/geoip?callback=?",
-			function(json) {
-				sessionStorage.latitude = json.latitude;
-		  	sessionStorage.longitude = json.longitude;
-			}
-		);
-	});
-	</script>
-	<script>
-		var latitude = Number(sessionStorage.latitude);
-		var longitude = Number(sessionStorage.longtitude);
-		var coordinates = {lat: latitude, lng: longitude};
-		var service = new google.maps.places.PlacesService(document.getElementById('poop'));
-		service.nearbySearch({
-			location: coordinates,
-			radius: 500
-		}, callback);
-		alert("test");
-		function callback(place, status) {
-			if (status == google.maps.places.PlacesServiceStatus.OK) {
-			alert(place[0].place_id);
-			sessionStorage.id = place[0].place_id;
-			}
-		}
-	</script>
-	<script>
-		var myID = sessionStorage.id;
-		var request = {
-		  placeId: myID
-		};
-		var service = new google.maps.places.PlacesService(document.getElementById('poop'));
-		service.getDetails(request, callback);
-		function callback(place, status) {
-			  if (status == google.maps.places.PlacesServiceStatus.OK) {
-					$(".bus-rating").text(place.rating);
-					$(".bus-name").text(place.name);
-					$("#address").text(place.formatted_address);
-					$("#phone").text(place.formatted_phone_number)
-					$("#reviewnum").text(place.user_ratings_total);
-					$("#monday").text(place.opening_hours.weekday_text[0]);
-					$("#tuesday").text(place.opening_hours.weekday_text[1]);
-					$("#wednesday").text(place.opening_hours.weekday_text[2]);
-					$("#thursday").text(place.opening_hours.weekday_text[3]);
-					$("#friday").text(place.opening_hours.weekday_text[4]);
-					$("#saturday").text(place.opening_hours.weekday_text[5]);
-					$("#sunday").text(place.opening_hours.weekday_text[6]);
-
-					//ratings array
-					var ratings = [];
-					for (i = 0; i < 5; i++) {
-						ratings[i] = place.reviews[i].rating;
-					}
-
-					//date array
-					var dateOfReview = [];
-					for (i = 0; i < 5; i++) {
-						dateOfReview[i] = moment.unix(place.reviews[i].time).format("MM/DD/YYYY");
-						dateOfReview.reverse();
-					}
-
-					var randomScalingFactor = function(){ return 9};
-					var lineChartData = {
-						labels : dateOfReview,
-						datasets : [
-							{
-								label: "My First dataset",
-								fillColor : "RGBA(49, 25, 58, .5)",
-								strokeColor : "RGBA(49, 25, 58, 1)",
-								pointColor : "RGBA(227, 39, 90, .5)",
-								pointStrokeColor : "RGBA(227, 39, 90, 1)",
-								pointHighlightFill : "RGBA(227, 39, 90, 1)",
-								pointHighlightStroke : "RGBA(227, 39, 90, .5)",
-								data : ratings
-							}
-						]
-					}
-
-					var ctx = document.getElementById("canvas").getContext("2d");
-					window.myLine = new Chart(ctx).Line(lineChartData, {responsive: true});
-
-			  }
-			}
-
+		googleApi();
 		</script>
 	</div>
 
