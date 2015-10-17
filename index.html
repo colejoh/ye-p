@@ -12,18 +12,6 @@
 	</head>
 	<body>
 	<script>	sessionStorage.test = 5; </script>
-	<div id="poop">
-	</div>
-	<script>
-		$(document).ready(function() {
-		$.getJSON("http://www.telize.com/geoip?callback=?",
-			function(json) {
-				sessionStorage.latitude = json.latitude;
-		    sessionStorage.longitude = json.longitude;
-			}
-		);
-	});
-	</script>
 		<div class="outer">
 			<div class="middle">
 				<div class="inner">
@@ -31,24 +19,7 @@
 					<div id="tagline">A real analysis of consumer reviews</div>
 					<form method="GET" action="info/index.html">
 						<input id="field" type="text" name="q" placeholder="business name"> <br/>
-						<input type="hidden" name="id">
 						<div id="submit_wrapper"><input id="submit" type="submit" name="s" value="search"></div>
-						<script>
-							var latitude = Number(sessionStorage.latitude);
-							var longitude = Number(sessionStorage.longitude);
-							var coordinates = {lat: latitude, lng: longitude};
-							service = new google.maps.places.PlacesService(document.getElementById('poop'));
-							service.nearbySearch({
-								location: coordinates,
-								radius: 500,
-								name: nom
-							}, callback);
-							function callback(place, status) {
-							  if (status == google.maps.places.PlacesServiceStatus.OK) {
-							  alert(place[0].place_id);
-							  }
-							}
-						</script>
 					</form>
 				</div>
 			</div>
