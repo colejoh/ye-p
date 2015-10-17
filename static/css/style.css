@@ -10,7 +10,7 @@ html, body {
     height: 100%;
     width: 100%;
 
-    background: url(../assets/chart.svg);
+    background: url(../img/chart.svg);
     background-position: center bottom;
     background-repeat: no-repeat;
 }
