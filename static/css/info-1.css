@@ -11,6 +11,7 @@ body{
 	position: relative;
 	bottom: 1px;
 	text-align: center;
+	font-weight: 600;
 }
 .graph{
 	position: relative;

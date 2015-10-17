@@ -119,7 +119,7 @@ html, body {
 	float: left;
 }
 .image {
-	
+	width: 100%;
 }
 .right {
 	width: calc(100% - 100px);
