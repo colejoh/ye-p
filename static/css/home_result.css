@@ -9,7 +9,7 @@ html, body {
     position: absolute;
     height: 100%;
     width: 100%;
-    
+
     background: url(../assets/chart.svg);
     background-position: center bottom;
     background-repeat: no-repeat;
@@ -22,7 +22,7 @@ html, body {
 
 .inner {
     margin-left: auto;
-    margin-right: auto; 
+    margin-right: auto;
     width: 600px;
 }
 #logo {
@@ -31,7 +31,7 @@ html, body {
 	font-size: 80px;
 	font-weight: 600;
 	margin-bottom: 10px;
-	
+
 }
 #tagline {
 	font-family: 'Helvetica Neue', sans-serif;
@@ -65,11 +65,11 @@ html, body {
 	margin-top: 10px;
 	margin-left: auto;
 	margin-right: auto;
-	
+
 	font-family: 'Helvetica Neue', sans-serif;
 	font-size: 14px;
 	font-weight: 200;
-	
+
 	-webkit-transition:.2s;
 	-moz-transition:.2s;
 	-o-transition:.2s;
@@ -81,7 +81,7 @@ html, body {
 	color: #31193A;
 	border: 2px solid #31193A;
 	cursor: pointer;
-	
+
 	-webkit-transition:.2s;
 	-moz-transition:.2s;
 	-o-transition:.2s;
@@ -110,7 +110,7 @@ html, body {
 	margin-bottom: 20px;
 	margin-left: auto;
 	margin-right: auto;
-	
+
 	text-align: center;
 	line-height: 100px;
 }
