@@ -7,9 +7,9 @@ app.config["DEBUG"] = True  # Only include this while you are testing your app
 def hello():
     return render_template("index.html")
 
-@app.route("/results")
-def results(results_query):
-    return results_query
+@app.route("/results", methods=['POST'])
+def results():
+    return render_template("results.html")
 
 @app.errorhandler(404)
 def page_not_found(error):
