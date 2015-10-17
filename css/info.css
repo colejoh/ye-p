@@ -1,0 +1,22 @@
+.branding{
+	color: #E3285A;
+	font-size: 25px;
+	text-align: center;
+}
+.graph{
+	position: relative;
+	top: 25px;
+}
+
+.s-bar{
+	width: 100%;
+	border-radius: 4px;
+	border: 1px solid #B6B6C8;
+	padding: 3px 5px;
+}
+
+.placeholder{
+	height: 300px;
+	width: 100%;
+	background-color: black;
+}
