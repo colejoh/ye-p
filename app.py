@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, render_template
-from flask.ext.heroku import heroku
+from flask.ext.heroku import Heroku
 
 app = Flask(__name__)
 heroku = Heroku(app)
