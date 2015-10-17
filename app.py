@@ -8,7 +8,7 @@ app = Flask(__name__)
 app.config["DEBUG"] = True  # Only include this while you are testing your app
 
 @app.route("/")
-def hello():
+def main():
     return render_template("index.html")
 
 @app.route("/results", methods=['POST'])
