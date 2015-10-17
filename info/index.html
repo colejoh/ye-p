@@ -15,6 +15,7 @@
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWY8hgOqA2BCs1yEDaxf2Q71w2BsQBPnY&libraries=places"></script>
 		<script>
 			var request = {
+				//value recieved from results page gets put here
 			  placeId: 'ChIJXSxg2vJ7j4ARSNJPCQe2F7Q'
 			};
 			service = new google.maps.places.PlacesService(document.getElementById('poop'));
@@ -41,6 +42,13 @@
 						ratings[i] = place.reviews[i].rating;
 					}
 
+					//average of last 5 ratings
+					var avg = 0;
+					for (i = 0; i < 5; i++) {
+						avg += ratings[i];
+					}
+					avg = avg / 5;
+
 					//date array
 					var dateOfReview = [];
 					for (i = 0; i < 5; i++) {
@@ -48,6 +56,38 @@
 						dateOfReview.reverse();
 					}
 
+					var millisecondsBetweenNowAnd5ReviewsAgo = (new Date().getTime()) - place.reviews[4].time;
+					var months = millisecondsBetweenNowAnd5ReviewsAgo / 2628000000;
+					console.log("Months: " + months);
+
+					//comparing last 5 rating to entire rating
+					var times = Math.round((avg / place.rating) * 100) / 100;
+					console.log("New average is: " + times);
+
+					if (times < 0.5) {
+						$("#compare").text("Recently, " + place.name +
+						" has been doing poorly. Their score has gone down by "
+						+ (times * 100) + "%");
+					} else if (times >= .5 && times < 1) {
+						$("#compare").text("Recently, " + place.name +
+						" has not been doing very well. Their score has gone down by "
+						+ (times * 100) + "%");
+					} else if (times >=1 && times < 1.5) {
+						$("#compare").text("Recently, " + place.name +
+						" has been doing better than average. Their score has gone up by "
+						+ (times * 100) + "%");
+					} else if (times >= 1.5 && times < 2) {
+						$("#compare").text("Recently, " + place.name +
+						" has been doing well. Their score has gone up by "
+						+ (times * 100) + "%");
+					} else {
+						$("#compare").text("Recently, " + place.name +
+						" has been doing very well. Their score has gone up by "
+						+ (times * 100) + "%");
+					}
+
+
+					//Setting up paramaters of graph
 					var randomScalingFactor = function(){ return 9};
 					var lineChartData = {
 						labels : dateOfReview,
@@ -60,7 +100,8 @@
 								pointStrokeColor : "RGBA(227, 39, 90, 1)",
 								pointHighlightFill : "RGBA(227, 39, 90, 1)",
 								pointHighlightStroke : "RGBA(227, 39, 90, .5)",
-								data : ratings
+								data : ratings,
+								maintainAspectRatio: false,
 							}
 						]
 					}
@@ -144,7 +185,7 @@
 
 				<div class="col-md-6 col-lg-6">
 						<div class="data-a ul">Data Analysis</div>
-						<p class="placetext">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto sint, et porro. Tempora, dolorum pariatur soluta eius dolore nam autem cum corporis itaque hic dignissimos nobis iusto rem, enim consequatur tempore facere minima, quod debitis. Doloremque earum similique officiis, aspernatur perspiciatis? Facere nesciunt explicabo nihil magni, laboriosam debitis, molestiae iste. Aliquam natus eum architecto laborum quia ex officia neque, rerum est nobis culpa quae fugiat unde tempora quis omnis voluptatem! Ex illo fuga totam fugit rem ipsum dolor, enim ad omnis architecto culpa impedit in commodi vel, ipsam sunt, numquam odio sed cumque alias eaque obcaecati delectus? Aspernatur sed quis, et! Quas optio reiciendis dicta, quis voluptas, commodi perferendis eaque cupiditate, sit libero ab in repellendus laborum, nesciunt vero. Voluptas odio sapiente provident, fugiat molestias.</p>
+							<div id="compare"></div>
 				</div>
 
 			</div>
