@@ -1,6 +1,15 @@
+body{
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+.ul{
+	text-decoration: underline;
+}
+
 .branding{
 	color: #E3285A;
-	font-size: 25px;
+	font-size: 200%;
+	position: relative;
+	bottom: 1px;
 	text-align: center;
 }
 .graph{
@@ -12,11 +21,51 @@
 	width: 100%;
 	border-radius: 4px;
 	border: 1px solid #B6B6C8;
-	padding: 3px 5px;
+	padding: 7px 5px;
 }
 
 .placeholder{
 	height: 300px;
 	width: 100%;
 	background-color: black;
+}
+
+.bus-archetype{
+	margin-top: 3em;
+}
+
+.bus-name{
+	font-size: 30px;
+	text-align: center;
+	margin-top: 15px;
+}
+
+.bus-rating{
+	text-align: center;
+	font-size: 35px;
+}
+.reviews{
+	text-align: center;
+}
+
+.info{
+	text-align: center;
+	font-size: 25px;
+}
+.data-a{
+	text-align: center;
+	font-size: 25px;
+}
+
+.break{
+	height: 2px;
+	color: black;
+	width: 65%;
+}
+
+@media screen and (min-width: 901px){
+	.graph{
+		width: 75%;
+		margin: 0 auto;
+	}
 }
