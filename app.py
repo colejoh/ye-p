@@ -11,6 +11,11 @@ app.config["DEBUG"] = True  # Only include this while you are testing your app
 def main():
     return render_template("index.html")
 
+@app.route("/", methods=['post'])
+def my_form_post():
+    business_name = request.form['q']
+    print business_name
+
 @app.route("/results", methods=['POST'])
 def results():
     return render_template("results.html")
