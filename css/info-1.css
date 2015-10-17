@@ -89,6 +89,12 @@ body{
 .pad{
 	padding: 10px 0;
 }
+#reviewnum {
+	display: inline;
+}
+h5 {
+	line-height: 1.6em;
+}
 
 @media screen and (min-width: 901px){
 	.graph{
