@@ -77,7 +77,7 @@ html, body {
 	transition:.2s;
 }
 #submit:hover {
-	background: rgba(255,255,255,0);
+	background: #E7E9EE;
 	color: #31193A;
 	border: 2px solid #31193A;
 	cursor: pointer;
@@ -113,4 +113,31 @@ html, body {
 
 	text-align: center;
 	line-height: 100px;
+}
+.left {
+	width: 100px;
+	float: left;
+}
+.image {
+	
+}
+.right {
+	width: calc(100% - 100px);
+	float: left;
+}
+.name {
+	color: #E7E9EE;
+	font-weight: 600;
+	font-size: 18px;
+	padding-left: 10px;
+}
+.address {
+	padding-left: 10px;
+	color: #E7E9EE;
+	font-weight: 300;
+}
+.phone {
+	padding-left: 10px;
+	color: #E7E9EE;
+	font-weight: 300;
 }
