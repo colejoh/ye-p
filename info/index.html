@@ -3,11 +3,80 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Ye-p Info Page</title>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script src='../script/Chart.js-master/Chart.js'></script>
+	<script src='../script/moment.js'></script>
 	<link rel="stylesheet" href="../css/info-1.css">
 </head>
 <body>
+	<script>
+	sessionStorage.id = 'ChIJN1t_tDeuEmsRUsoyG83frY4'
+	var myID = sessionStorage.id
+	</script>
+	<div id="poop">
+	</div>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWY8hgOqA2BCs1yEDaxf2Q71w2BsQBPnY&libraries=places"></script>
+		<script>
+			var request = {
+			  placeId: 'ChIJXSxg2vJ7j4ARSNJPCQe2F7Q'
+			};
+			service = new google.maps.places.PlacesService(document.getElementById('poop'));
+			service.getDetails(request, callback);
+
+			function callback(place, status) {
+			  if (status == google.maps.places.PlacesServiceStatus.OK) {
+					$(".bus-rating").text(place.rating);
+					$(".bus-name").text(place.name);
+					$("#address").text(place.formatted_address);
+					$("#phone").text(place.formatted_phone_number)
+					$("#reviewnum").text(place.user_ratings_total);
+					$("#monday").text(place.opening_hours.weekday_text[0]);
+					$("#tuesday").text(place.opening_hours.weekday_text[1]);
+					$("#wednesday").text(place.opening_hours.weekday_text[2]);
+					$("#thursday").text(place.opening_hours.weekday_text[3]);
+					$("#friday").text(place.opening_hours.weekday_text[4]);
+					$("#saturday").text(place.opening_hours.weekday_text[5]);
+					$("#sunday").text(place.opening_hours.weekday_text[6]);
+
+					//ratings array
+					var ratings = [];
+					for (i = 0; i < 5; i++) {
+						ratings[i] = place.reviews[i].rating;
+					}
+
+					//date array
+					var dateOfReview = [];
+					for (i = 0; i < 5; i++) {
+						dateOfReview[i] = moment.unix(place.reviews[i].time).format("MM/DD/YYYY");
+						dateOfReview.reverse();
+					}
+
+					var randomScalingFactor = function(){ return 9};
+					var lineChartData = {
+						labels : dateOfReview,
+						datasets : [
+							{
+								label: "My First dataset",
+								fillColor : "RGBA(49, 25, 58, .5)",
+								strokeColor : "RGBA(49, 25, 58, 1)",
+								pointColor : "RGBA(227, 39, 90, .5)",
+								pointStrokeColor : "RGBA(227, 39, 90, 1)",
+								pointHighlightFill : "RGBA(227, 39, 90, 1)",
+								pointHighlightStroke : "RGBA(227, 39, 90, .5)",
+								data : ratings
+							}
+						]
+					}
+
+					var ctx = document.getElementById("canvas").getContext("2d");
+					window.myLine = new Chart(ctx).Line(lineChartData, {responsive: true});
+
+			  }
+			}
+
+		</script>
+	</div>
 
 	<div class="navbar navbar-default">
 		<div class="container-fluid">
@@ -28,7 +97,11 @@
 	</div>
 
 	<div class="graph">
-		<div class="placeholder"></div><!-- placeholder for chart -->
+		<canvas id="canvas" height="50"></canvas>
+
+		<script>
+
+		</script>
 	</div>
 
 	<div class="bus-archetype">
@@ -38,11 +111,11 @@
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 					<div class="row">
 						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-							<div class="bus-name">Business Name.</div>
+							<div class="bus-name"></div>
 						</div>
 						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-							<div class="bus-rating">4 / 5</div>
-							<div class="reviews">Out of 114 reviews</div><!-- call number of reviews here -->
+							<div class="bus-rating"></div>
+							<div class="reviews">Out of <div id="reviewnum"></div> reviews</div><!-- call number of reviews here -->
 						</div>
 					</div>
 				</div>
@@ -56,12 +129,24 @@
 			<div class="row">
 
 				<div class="col-md-6 col-lg-6">
-						<div class="info ul">Info.</div>
-						<p class="placetext">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo tenetur soluta autem odit, necessitatibus quibusdam accusamus ullam, voluptatibus repellat possimus, nisi inventore quisquam illum mollitia eos animi minima iusto temporibus cum id labore! Saepe quod soluta id quisquam ipsa a officia sunt. Ratione, laboriosam? Saepe qui sit illo natus, vitae facere quae consectetur eum, eveniet, officia numquam nulla placeat, error dolores! Numquam temporibus corrupti, est ipsam iste, in dignissimos recusandae, alias placeat possimus ab architecto. Nulla cupiditate quaerat est enim, iste. Illo adipisci enim sint ratione, ipsam animi non corporis facilis pariatur esse sit odio! Fugit sint, cupiditate dignissimos inventore officia excepturi, sunt adipisci voluptatibus sequi similique numquam dolorem asperiores aliquam earum eligendi. Velit earum soluta ab impedit, minus accusamus et! Sed, dolore veniam quaerat!</p>
+						<div class="info ul">Info</div>
+						<p class="placetext">
+							<h5>Address: <div id="address" style="font-weight: 200;"></div></h5>
+							<h5>Phone: <div id="phone" style="font-weight: 200;"></div></h5>
+							<h5>Hours:
+								<div id="monday" style="font-weight: 200"></div>
+								<div id="tuesday" style="font-weight: 200"></div>
+								<div id="wednesday" style="font-weight: 200"></div>
+								<div id="thursday" style="font-weight: 200"></div>
+								<div id="friday" style="font-weight: 200"></div>
+								<div id="saturday" style="font-weight: 200"></div>
+								<div id="sunday" style="font-weight: 200"></div>
+							</h5>
+						</p>
 				</div>
 
 				<div class="col-md-6 col-lg-6">
-						<div class="data-a ul">Data Analysis.</div>
+						<div class="data-a ul">Data Analysis</div>
 						<p class="placetext">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto sint, et porro. Tempora, dolorum pariatur soluta eius dolore nam autem cum corporis itaque hic dignissimos nobis iusto rem, enim consequatur tempore facere minima, quod debitis. Doloremque earum similique officiis, aspernatur perspiciatis? Facere nesciunt explicabo nihil magni, laboriosam debitis, molestiae iste. Aliquam natus eum architecto laborum quia ex officia neque, rerum est nobis culpa quae fugiat unde tempora quis omnis voluptatem! Ex illo fuga totam fugit rem ipsum dolor, enim ad omnis architecto culpa impedit in commodi vel, ipsam sunt, numquam odio sed cumque alias eaque obcaecati delectus? Aspernatur sed quis, et! Quas optio reiciendis dicta, quis voluptas, commodi perferendis eaque cupiditate, sit libero ab in repellendus laborum, nesciunt vero. Voluptas odio sapiente provident, fugiat molestias.</p>
 				</div>
 
