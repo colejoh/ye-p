@@ -7,15 +7,13 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<script src='../script/Chart.js-master/Chart.js'></script>
 	<script src='../script/moment.js'></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWY8hgOqA2BCs1yEDaxf2Q71w2BsQBPnY&libraries=places"></script>
 	<link rel="stylesheet" href="../css/info-1.css">
 </head>
 <body>
-	<script>
-	sessionStorage.id = 'ChIJN1t_tDeuEmsRUsoyG83frY4'
-	var myID = sessionStorage.id
-	</script>
 	<div id="poop">
 	</div>
+<<<<<<< HEAD
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWY8hgOqA2BCs1yEDaxf2Q71w2BsQBPnY&libraries=places"></script>
 		<script>
 			var request = {
@@ -26,6 +24,43 @@
 			service.getDetails(request, callback);
 
 			function callback(place, status) {
+=======
+	<script>
+		$(document).ready(function() {
+		$.getJSON("http://www.telize.com/geoip?callback=?",
+			function(json) {
+				sessionStorage.latitude = json.latitude;
+		  	sessionStorage.longitude = json.longitude;
+			}
+		);
+	});
+	</script>
+	<script>
+		var latitude = Number(sessionStorage.latitude);
+		var longitude = Number(sessionStorage.longtitude);
+		var coordinates = {lat: latitude, lng: longitude};
+		var service = new google.maps.places.PlacesService(document.getElementById('poop'));
+		service.nearbySearch({
+			location: coordinates,
+			radius: 500
+		}, callback);
+		alert("test");
+		function callback(place, status) {
+			if (status == google.maps.places.PlacesServiceStatus.OK) {
+			alert(place[0].place_id);
+			sessionStorage.id = place[0].place_id;
+			}
+		}
+	</script>
+	<script>
+		var myID = sessionStorage.id;
+		var request = {
+		  placeId: myID
+		};
+		var service = new google.maps.places.PlacesService(document.getElementById('poop'));
+		service.getDetails(request, callback);
+		function callback(place, status) {
+>>>>>>> 781d4e7b8c76ff7aeb41d664f35c98377b731a0e
 			  if (status == google.maps.places.PlacesServiceStatus.OK) {
 					$(".bus-rating").text(place.rating);
 					$(".bus-name").text(place.name);

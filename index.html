@@ -7,26 +7,11 @@
 		<meta name="author" content="">
 		<title>ye-p</title>
 		<link rel="stylesheet" href="css/style.css">
-		<script src="scripts/script.js" href="text/javascript"></script>
 		<script type='text/javascript' src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 		<link rel="stylesheet" href="css/animate.css">
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWY8hgOqA2BCs1yEDaxf2Q71w2BsQBPnY&libraries=places"></script>
 	</head>
 	<body>
-	<div id="poop">
-	</div>
-	<script type="application/javascript">
-		$(document).ready(function() {
-			$.getJSON("http://www.telize.com/geoip?callback=?",
-				function(json) {
-    			document.write("Geolocation information for IP address : ", json.ip);
-    			document.write("Country : ", json.country);
-    			document.write("latitude : ", json.latitude);
-	    		var longitude = json.longitude;
-					}
-				);
-			});
-	</script>
 		<div class="outer">
 			<div class="middle">
 				<div class="inner">
@@ -34,18 +19,6 @@
 					<div id="tagline">A real analysis of consumer reviews</div>
 					<form method="GET" action="info/index.html">
 						<input id="field" type="text" name="q" placeholder="business name"> <br/>
-						<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWY8hgOqA2BCs1yEDaxf2Q71w2BsQBPnY&libraries=places"></script>
-						<script>
-							var coordinates = {latitude, longitude};
-							service = new google.maps.places.PlacesService(document.getElementById('poop'));
-							service.getDetails(request, callback);
-							function callback(place, status) {
-							  if (status == google.maps.places.PlacesServiceStatus.OK) {
-							    console.log(place.placeId);
-							  }
-							}
-
-						</script>
 						<div id="submit_wrapper"><input id="submit" type="submit" name="s" value="search"></div>
 					</form>
 				</div>
