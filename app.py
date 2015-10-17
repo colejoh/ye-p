@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, request
 import os
 ## from flask.ext.heroku import Heroku
 
@@ -11,12 +11,8 @@ app.config["DEBUG"] = True  # Only include this while you are testing your app
 def main():
     return render_template("index.html")
 
-@app.route("/results", methods=['post'])
-def my_form_post():
-    business_name = request.form['q']
-    print business_name
 
-@app.route("/results", methods=['POST'])
+@app.route("/results", methods=['GET'])
 def results():
     return render_template("results.html")
 
