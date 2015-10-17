@@ -6,6 +6,10 @@ body{
 .ul{
 	text-decoration: underline;
 }
+.s-bar-total{
+	width: 100%;
+	display: inline-block;
+}
 
 .branding{
 	color: #E3285A;
