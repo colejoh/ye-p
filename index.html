@@ -12,6 +12,8 @@
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWY8hgOqA2BCs1yEDaxf2Q71w2BsQBPnY&libraries=places"></script>
 	</head>
 	<body>
+	<div id="poop">
+	</div>
 	<script type="application/javascript">
 		$(document).ready(function() {
 			$.getJSON("http://www.telize.com/geoip?callback=?",
@@ -34,17 +36,11 @@
 						<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWY8hgOqA2BCs1yEDaxf2Q71w2BsQBPnY&libraries=places"></script>
 						<script>
 							var coordinates = {latitude, longitude};
-							var request = {
-							  location: coordinates
-								radius = 500
-							};
 							service = new google.maps.places.PlacesService(document.getElementById('poop'));
 							service.getDetails(request, callback);
-
 							function callback(place, status) {
 							  if (status == google.maps.places.PlacesServiceStatus.OK) {
-							    console.log(place.rating);
-									$(".bus-rating").text(place.rating);
+							    console.log(place.placeId);
 							  }
 							}
 
