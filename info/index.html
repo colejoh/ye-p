@@ -6,6 +6,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<script src='../script/Chart.js-master/Chart.js'></script>
+	<script src='../script/moment.js'></script>
 	<link rel="stylesheet" href="../css/info-1.css">
 </head>
 <body>
@@ -14,15 +15,59 @@
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWY8hgOqA2BCs1yEDaxf2Q71w2BsQBPnY&libraries=places"></script>
 		<script>
 			var request = {
-			  placeId: 'ChIJN1t_tDeuEmsRUsoyG83frY4'
+			  placeId: 'ChIJXSxg2vJ7j4ARSNJPCQe2F7Q'
 			};
 			service = new google.maps.places.PlacesService(document.getElementById('poop'));
 			service.getDetails(request, callback);
 
 			function callback(place, status) {
 			  if (status == google.maps.places.PlacesServiceStatus.OK) {
-			    console.log(place.rating);
 					$(".bus-rating").text(place.rating);
+					$(".bus-name").text(place.name);
+					$("#address").text(place.formatted_address);
+					$("#phone").text(place.formatted_phone_number)
+					$("#reviewnum").text(place.user_ratings_total);
+					$("#monday").text(place.opening_hours.weekday_text[0]);
+					$("#tuesday").text(place.opening_hours.weekday_text[1]);
+					$("#wednesday").text(place.opening_hours.weekday_text[2]);
+					$("#thursday").text(place.opening_hours.weekday_text[3]);
+					$("#friday").text(place.opening_hours.weekday_text[4]);
+					$("#saturday").text(place.opening_hours.weekday_text[5]);
+					$("#sunday").text(place.opening_hours.weekday_text[6]);
+
+					//ratings array
+					var ratings = [];
+					for (i = 0; i < 5; i++) {
+						ratings[i] = place.reviews[i].rating;
+					}
+
+					//date array
+					var dateOfReview = [];
+					for (i = 0; i < 5; i++) {
+						dateOfReview[i] = moment.unix(place.reviews[i].time).format("MM/DD/YYYY");
+						dateOfReview.reverse();
+					}
+
+					var randomScalingFactor = function(){ return 9};
+					var lineChartData = {
+						labels : dateOfReview,
+						datasets : [
+							{
+								label: "My First dataset",
+								fillColor : "RGBA(49, 25, 58, .5)",
+								strokeColor : "RGBA(49, 25, 58, 1)",
+								pointColor : "RGBA(227, 39, 90, .5)",
+								pointStrokeColor : "RGBA(227, 39, 90, 1)",
+								pointHighlightFill : "RGBA(227, 39, 90, 1)",
+								pointHighlightStroke : "RGBA(227, 39, 90, .5)",
+								data : ratings
+							}
+						]
+					}
+
+					var ctx = document.getElementById("canvas").getContext("2d");
+					window.myLine = new Chart(ctx).Line(lineChartData, {responsive: true});
+
 			  }
 			}
 
@@ -52,31 +97,6 @@
 		<canvas id="canvas" height="50"></canvas>
 
 		<script>
-			var randomScalingFactor = function(){ return 9};
-			var lineChartData = {
-				labels : ["January","February","March","April","May","June","July", "August"],
-				datasets : [
-					{
-						label: "My First dataset",
-						fillColor : "RGBA(49, 25, 58, .5)",
-						strokeColor : "RGBA(49, 25, 58, 1)",
-						pointColor : "RGBA(227, 39, 90, .5)",
-						pointStrokeColor : "RGBA(227, 39, 90, 1)",
-						pointHighlightFill : "RGBA(227, 39, 90, 1)",
-						pointHighlightStroke : "RGBA(227, 39, 90, .5)",
-						data : [5, 3.4, 4.1, 3.9, 3.2, 2.5, 2, 0]
-					}
-				]
-
-			}
-
-		window.onload = function(){
-			var ctx = document.getElementById("canvas").getContext("2d");
-			window.myLine = new Chart(ctx).Line(lineChartData, {
-				responsive: true
-			});
-		}
-
 
 		</script>
 	</div>
@@ -88,11 +108,11 @@
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 					<div class="row">
 						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-							<div class="bus-name">Business Name.</div>
+							<div class="bus-name"></div>
 						</div>
 						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 							<div class="bus-rating"></div>
-							<div class="reviews">Out of 114 reviews</div><!-- call number of reviews here -->
+							<div class="reviews">Out of <div id="reviewnum"></div> reviews</div><!-- call number of reviews here -->
 						</div>
 					</div>
 				</div>
@@ -108,8 +128,17 @@
 				<div class="col-md-6 col-lg-6">
 						<div class="info ul">Info.</div>
 						<p class="placetext">
-							<h5>1165 W State St.</h5>
-							<h5>555-555-5555</h5>
+							<h5>Address: <div id="address" style="font-weight: 200;"></div></h5>
+							<h5>Phone: <div id="phone" style="font-weight: 200;"></div></h5>
+							<h5>Hours:
+								<div id="monday" style="font-weight: 200"></div>
+								<div id="tuesday" style="font-weight: 200"></div>
+								<div id="wednesday" style="font-weight: 200"></div>
+								<div id="thursday" style="font-weight: 200"></div>
+								<div id="friday" style="font-weight: 200"></div>
+								<div id="saturday" style="font-weight: 200"></div>
+								<div id="sunday" style="font-weight: 200"></div>
+							</h5>
 						</p>
 				</div>
 
