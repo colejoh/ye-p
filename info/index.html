@@ -13,7 +13,6 @@
 <body>
 	<div id="poop">
 	</div>
-<<<<<<< HEAD
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWY8hgOqA2BCs1yEDaxf2Q71w2BsQBPnY&libraries=places"></script>
 		<script>
 			var request = {
@@ -24,7 +23,6 @@
 			service.getDetails(request, callback);
 
 			function callback(place, status) {
-=======
 	<script>
 		$(document).ready(function() {
 		$.getJSON("http://www.telize.com/geoip?callback=?",
@@ -60,7 +58,6 @@
 		var service = new google.maps.places.PlacesService(document.getElementById('poop'));
 		service.getDetails(request, callback);
 		function callback(place, status) {
->>>>>>> 781d4e7b8c76ff7aeb41d664f35c98377b731a0e
 			  if (status == google.maps.places.PlacesServiceStatus.OK) {
 					$(".bus-rating").text(place.rating);
 					$(".bus-name").text(place.name);
