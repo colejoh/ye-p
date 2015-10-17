@@ -11,6 +11,7 @@
 <body>
 <script type="text/javascript">
 		var url="https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJN1t_tDeuEmsRUsoyG83frY4&key=AIzaSyCWY8hgOqA2BCs1yEDaxf2Q71w2BsQBPnY";
+<<<<<<< HEAD
 
 		$.getJSON(url, function(data) {
 			rating = data.results.rating;
@@ -18,6 +19,13 @@
 			alert(rating);
 		})
 		
+=======
+		$.getJSON(url, function() {
+			$.each(data.results, function() {
+				alert(this.rating);
+			});
+		});
+>>>>>>> 9eb98a909ca0ba63078156e0b4449f78df0df1e9
 </script>
 	<div class="navbar navbar-default">
 		<div class="container-fluid">
@@ -81,7 +89,7 @@
 							<div class="bus-name">Business Name.</div>
 						</div>
 						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-							<div class="bus-rating">4.65</div>
+							<div class="bus-rating"><script></script></div>
 							<div class="reviews">Out of 114 reviews</div><!-- call number of reviews here -->
 						</div>
 					</div>
