@@ -11,6 +11,14 @@
 		<script type='text/javascript' src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	</head>
 	<body>
+		<?php
+			//calling the user's location in the background so that load time is reduced
+			
+			$ip = $_SERVER['REMOTE_ADDR'];
+			$freegeoiplink = "http://freegeoip.net/xml/$ip";
+			$location = simplexml_load_file($freegeoiplink);
+			$city = $location->City;
+		?>
 		<div class="outer">
 			<div class="middle">
 				<div class="inner">
