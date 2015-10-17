@@ -6,11 +6,19 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="../css/info-1.css">
-	<script src="https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJN1t_tDeuEmsRUsoyG83frY4&key=AIzaSyCWY8hgOqA2BCs1yEDaxf2Q71w2BsQBPnY"></script>
 	</script>
 </head>
 <body>
+<script type="text/javascript">
+		var url="https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJN1t_tDeuEmsRUsoyG83frY4&key=AIzaSyCWY8hgOqA2BCs1yEDaxf2Q71w2BsQBPnY";
 
+		$.getJSON(url, function(data) {
+			rating = data.results.rating;
+			alert("test");
+			alert(rating);
+		})
+
+</script>
 	<div class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="row">
