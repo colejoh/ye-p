@@ -18,5 +18,5 @@ def results():
 def page_not_found(error):
     return "Sorry, this page was not found.", 404
 
-if __name__ == "__main__":
-    app.run()
+##if __name__ == "__main__":
+    ##app.run()
