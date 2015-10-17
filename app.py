@@ -5,7 +5,7 @@ app.config["DEBUG"] = True  # Only include this while you are testing your app
 
 @app.route("/")
 def hello():
-    return render_template("ye-p/index.html")
+    return render_template("index.html")
 
 @app.errorhandler(404)
 def page_not_found(error):
