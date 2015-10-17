@@ -12,13 +12,26 @@
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWY8hgOqA2BCs1yEDaxf2Q71w2BsQBPnY&libraries=places"></script>
 	</head>
 	<body>
+	<script type="application/javascript">
+		$(document).ready(function() {
+			$.getJSON("http://www.telize.com/geoip?callback=?",
+				function(json) {
+    			document.write("Geolocation information for IP address : ", json.ip);
+    			document.write("Country : ", json.country);
+    			document.write("Latitude : ", json.latitude);
+	    		document.write("Longitude : ", json.longitude);
+					}
+				);
+			});
+	</script>
 		<div class="outer">
 			<div class="middle">
 				<div class="inner">
 					<div id="logo">ye-p.</div>
-					<div id="tagline">A real analysis of Yelp reviews</div>
+					<div id="tagline">A real analysis of consumer reviews</div>
 					<form method="GET" action="results/index.html">
 						<input id="field" type="text" name="q" placeholder="business name"> <br/>
+						sessionStorage.setItem('id', 'ChIJN1t_tDeuEmsRUsoyG83frY4')
 						<div id="submit_wrapper"><input id="submit" type="submit" name="s" value="search"></div>
 					</form>
 				</div>

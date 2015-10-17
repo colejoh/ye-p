@@ -9,12 +9,16 @@
 	<link rel="stylesheet" href="../css/info-1.css">
 </head>
 <body>
+	<script>
+	sessionStorage.id = 'ChIJN1t_tDeuEmsRUsoyG83frY4'
+	var myID = sessionStorage.id
+	</script>
 	<div id="poop">
 	</div>
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWY8hgOqA2BCs1yEDaxf2Q71w2BsQBPnY&libraries=places"></script>
 		<script>
 			var request = {
-			  placeId: 'ChIJN1t_tDeuEmsRUsoyG83frY4'
+			  placeId: myID
 			};
 			service = new google.maps.places.PlacesService(document.getElementById('poop'));
 			service.getDetails(request, callback);
