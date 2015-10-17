@@ -7,24 +7,22 @@
 		<meta name="author" content="">
 		<title>ye-p</title>
 		<link rel="stylesheet" href="css/style.css">
-		<script src="scripts/script.js" href="text/javascript"></script>
 		<script type='text/javascript' src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWY8hgOqA2BCs1yEDaxf2Q71w2BsQBPnY&libraries=places"></script>
 	</head>
 	<body>
+	<script>	sessionStorage.test = 5; </script>
 	<div id="poop">
 	</div>
-	<script type="application/javascript">
+	<script>
 		$(document).ready(function() {
-			$.getJSON("http://www.telize.com/geoip?callback=?",
-				function(json) {
-    			document.write("Geolocation information for IP address : ", json.ip);
-    			document.write("Country : ", json.country);
-    			var latitude = json.latitude;
-	    		var longitude = json.longitude;
-					}
-				);
-			});
+		$.getJSON("http://www.telize.com/geoip?callback=?",
+			function(json) {
+				sessionStorage.latitude = json.latitude;
+		    sessionStorage.longitude = json.longitude;
+			}
+		);
+	});
 	</script>
 		<div class="outer">
 			<div class="middle">
@@ -33,19 +31,24 @@
 					<div id="tagline">A real analysis of consumer reviews</div>
 					<form method="GET" action="info/index.html">
 						<input id="field" type="text" name="q" placeholder="business name"> <br/>
-						<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWY8hgOqA2BCs1yEDaxf2Q71w2BsQBPnY&libraries=places"></script>
+						<input type="hidden" name="id">
+						<div id="submit_wrapper"><input id="submit" type="submit" name="s" value="search"></div>
 						<script>
-							var coordinates = {latitude, longitude};
+							var latitude = Number(sessionStorage.latitude);
+							var longitude = Number(sessionStorage.longitude);
+							var coordinates = {lat: latitude, lng: longitude};
 							service = new google.maps.places.PlacesService(document.getElementById('poop'));
-							service.getDetails(request, callback);
+							service.nearbySearch({
+								location: coordinates,
+								radius: 500,
+								name: nom
+							}, callback);
 							function callback(place, status) {
 							  if (status == google.maps.places.PlacesServiceStatus.OK) {
-							    console.log(place.placeId);
+							  alert(place[0].place_id);
 							  }
 							}
-
 						</script>
-						<div id="submit_wrapper"><input id="submit" type="submit" name="s" value="search"></div>
 					</form>
 				</div>
 			</div>
