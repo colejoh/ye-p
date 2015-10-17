@@ -16,13 +16,16 @@ import pprint
 import sys
 import urllib
 import urllib2
-
+import geo.py as geo
 import oauth2
+import cgi
 
+term =
+geo =
 
 API_HOST = 'api.yelp.com'
-DEFAULT_TERM = 'dinner'
-DEFAULT_LOCATION = 'San Francisco, CA'
+DEFAULT_TERM = term
+DEFAULT_LOCATION = geo
 SEARCH_LIMIT = 3
 SEARCH_PATH = '/v2/search/'
 BUSINESS_PATH = '/v2/business/'
