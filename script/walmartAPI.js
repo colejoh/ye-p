@@ -7,7 +7,23 @@ $.ajax({
   url:"http://api.walmartlabs.com/v1/search?apiKey=" + apiKey + "&query=" + item
 }).done(function(response){
   // Anything within this function will be called AFTER the ajax call comes back
-  console.log(getItems(response));
+  //console.log(getItems(response));
+  var objectArray = getItems(response);
+  var currentHTMLValue;
+  for (i = 0; i < objectArray.length; i++) {
+    currentHTMLValue = $("#main_wrapper").html();
+    var desc = (objectArray[i].shortDescription.substring(0, 100)) + "...";
+    $("#main_wrapper").html(currentHTMLValue +
+      "<a href='../info/index.html?q=" + objectArray[i].itemId + "&type=product'><div class='container'><div class='row'><div class='product-wrapper'><div class='name'>"
+        + objectArray[i].name +
+      "</div><div class='priceAndRating'> $"
+        + objectArray[i].salePrice + " • " + objectArray[i].customerRating +
+      " / 5</div><div class='prodDesc'>"
+        + desc +
+      "</div></div></div></div></a><hr class='breaks'/>"
+    );
+  }
+  console.log(objectArray[0]);
 });
 //console.log($.getJSON("http://api.walmartlabs.com/v1/search?apiKey=" + apiKey + "&query=" + item).responseJSON.start);
 }

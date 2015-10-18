@@ -27,12 +27,25 @@ li{
 .butn{
 	padding: 15px 10px;
 	border-radius: 5px;
-	margin: 0 auto; 
+	margin: 0 auto;
 	font-size: 17px;
-	color: white;
-	background-color: #E3285A;
+	color: #E52358;
+	background-color: #E7E9EE;
 	border: 2px solid #E3285A;
 	transition: .2s;
+}
+.butn:hover {
+	pointer: cursor;
+}
+.selected{
+	background-color: #E52358;
+	color: #fff;
+}
+
+.product-wrapper{
+	width: 60%;
+	margin: 0 auto;
+	text-align: center;
 }
 
 .prodct{
@@ -43,7 +56,7 @@ li{
 .buttn{
 	padding: 5px 7px;
 	border-radius: 5px;
-	margin: 0 auto; 
+	margin: 0 auto;
 	text-align: center;
 	font-size: 17px;
 	color: white;
