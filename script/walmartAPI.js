@@ -11,6 +11,8 @@ $.ajax({
   var objectArray = getItems(response);
   var currentHTMLValue;
   for (i = 0; i < objectArray.length; i++) {
+    if(objectArray[i].numReviews == undefined){}
+    else{
     currentHTMLValue = $("#main_wrapper").html();
     var desc = (objectArray[i].shortDescription.substring(0, 100)) + "...";
     $("#main_wrapper").html(currentHTMLValue +
@@ -22,6 +24,7 @@ $.ajax({
         + desc +
       "</div></div></div></div></a><hr class='breaks'/>"
     );
+  }
   }
   console.log(objectArray[0]);
 });
@@ -45,13 +48,17 @@ $.ajax({
 });
 }
 getScores = function(response, callback2){
-      console.log(response.length);
+      // console.log(response.length);
      for(i = 0; i<response.length;i++) {
        reviewScores[i] = response[i].overallRating.rating;
      }
+    //  reviewScores += [0]
+    //  reviewScores += [6]
+     if(reviewScores.length == 0){console.log("TEST?");}
+     else{
      callback3 = function(response){
-        console.log(reviewScores);
-        console.log(reviewDates);
+        // console.log(reviewScores);
+        // console.log(reviewDates);
         var lineChartData = {
          labels : reviewDates,
           datasets : [
@@ -78,6 +85,7 @@ getScores = function(response, callback2){
           callback3(response);
       }
        callback2(response, callback3);
+     }
 }
 getReviewScores = function(data) {
    console.log("test");
