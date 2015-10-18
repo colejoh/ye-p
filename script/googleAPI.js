@@ -40,23 +40,18 @@ for(i = 0; i < n.length; i++){
 
       //ratings array
       var ratings = [];
-      ratings[0] = place.reviews[3].rating;
-      ratings[1] = place.reviews[2].rating;
-      ratings[2] = place.reviews[1].rating;
-      ratings[3] = place.reviews[4].rating;
-      ratings[4] = place.reviews[0].rating;
-      ratings[5] = 5;
-      ratings[6] = 0;
-
       //date array
       var dateOfReview = [];
-      dateOfReview[0] = moment.unix(place.reviews[3].time).format("MM/DD/YYYY");
-      dateOfReview[1] = moment.unix(place.reviews[2].time).format("MM/DD/YYYY");
-      dateOfReview[2] = moment.unix(place.reviews[1].time).format("MM/DD/YYYY");
-      dateOfReview[3] = moment.unix(place.reviews[4].time).format("MM/DD/YYYY");
-      dateOfReview[4] = moment.unix(place.reviews[0].time).format("MM/DD/YYYY");
-
-      var randomScalingFactor = function(){ return 9};
+      var n = 0;
+      while(n < place.reviews.length){
+        if(n<=4){
+          ratings[n] = place.reviews[n].rating;
+          dateOfReview[n] = moment.unix(place.reviews[n].time).format("MM/DD/YYYY");
+        }else {
+          ratings[n] = n;
+        }
+        n++;
+      }
       var lineChartData = {
         labels : dateOfReview,
         datasets : [
