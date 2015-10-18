@@ -16,7 +16,7 @@ function returnNameAddress(passedPlaceID){
       nameAddressArray[1] = place.formatted_address;
       console.log(nameAddressArray);
       html = html + "<div id='result'><div class='name'>" + nameAddressArray[0] + "</div><div class='address'>" + nameAddressArray[1] + "</div></div>";
-      $("#main_wrapper").html(html);
+      $("#main_wrapper").html(html.substring(9));
 	  }
 	}
 }
