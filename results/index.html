@@ -38,16 +38,15 @@
 			<script type="text/javascript">
 				var resultIDs = [];
 				var request;
-
-				var callback = function(place, status, test) {
+				var allResults;
+				var callback = function(place, status) {
 					//console.log("TEST", test);
 					//console.log("status", status);
 					if (status === google.maps.places.PlacesServiceStatus.OK) {
 						var allResults = "";
 						for (i = 0; i < resultIDs.length; i++) {
-							allResults = getResults()
+							returnNameAddress(resultIDs[i]);
 						}
-						$("#main_wrapper").text("hello");
 					}
 				};
 				var getDetails = function(resultID) {

@@ -27,7 +27,7 @@ function search(cb) {
 
 function readGet() {
   var url = window.location.search.substring(1);
-  var n = url.substring(2, url.indexOf("&s"));
+  var n = url.substring(2, url.indexOf("&type"));
   for(i = 0; i < n.length; i++) {
     if(n.charAt(i) == '+') {
       n = n.substring(0,i) + " " + n.substring(i+1, n.length);
