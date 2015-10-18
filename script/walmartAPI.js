@@ -11,6 +11,8 @@ $.ajax({
   var objectArray = getItems(response);
   var currentHTMLValue;
   for (i = 0; i < objectArray.length; i++) {
+    if(objectArray[i].numReviews == undefined){}
+    else{
     currentHTMLValue = $("#main_wrapper").html();
     var desc = (objectArray[i].shortDescription.substring(0, 100)) + "...";
     $("#main_wrapper").html(currentHTMLValue +
@@ -22,6 +24,7 @@ $.ajax({
         + desc +
       "</div></div></div></div></a><hr class='breaks'/>"
     );
+  }
   }
   console.log(objectArray[0]);
 });
@@ -40,6 +43,8 @@ $.ajax({
   url:"http://api.walmartlabs.com/v1/reviews/" + ID + "?apiKey=" + apiKey
 }).done(function(response){
     var reviews = getReviewsTable(response);
+    console.log(response);
+    setInfo(ID);
     getScores(reviews);
 });
 }
@@ -47,6 +52,10 @@ getScores = function(response, callback2){
      for(i = 0; i<response.length;i++) {
        reviewScores[i] = response[i].overallRating.rating;
      }
+    //  reviewScores += [0]
+    //  reviewScores += [6]
+     if(reviewScores.length == 0){console.log("TEST?");}
+     else{
      callback3 = function(response){
         //console.log(reviewScores);
         //console.log(reviewDates);
@@ -80,7 +89,9 @@ getScores = function(response, callback2){
              }
            }
          }
-
+        // console.log(reviewScores);
+        // console.log(reviewDates);
+        var length = reviewScores.length;
         reviewScores[5] = 0;
         reviewScores[6] = 5;
         var lineChartData = {
@@ -108,6 +119,7 @@ getScores = function(response, callback2){
           callback3(response);
       }
        callback2(response, callback3);
+     }
 }
 getReviewScores = function(data) {
    console.log("test");
@@ -127,4 +139,15 @@ getItems = function(data){
 
 getReviewsTable = function(data){
  return(data.reviews);
+}
+
+setInfo = function(id){
+  $.ajax({
+    url:"http://api.walmartlabs.com/v1/items/"+ id +"?apiKey=" + apiKey
+  }).done(function (response){
+    console.log(response.name);
+    $(".bus-name").text(response.name);
+    $(".bus-rating").text(response.customerRating);
+    $("#reviewnum").text(response.numReviews);
+  })
 }

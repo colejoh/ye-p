@@ -61,15 +61,15 @@
 			<script type="text/javascript">
 			var url = window.location.search.substring(1);
 			var type = url.substring(url.indexOf("&type=")+6,url.indexOf("&s="));
-			console.log(type);
+			//console.log(type);
 			if(type=="product"){
 				var resultIDs = [];
 				var query = url.substring(url.indexOf("&q=")+3,url.indexOf("&type="));
-				console.log(query);
-				console.log(searchMart(query));
+				//console.log(query);
+				searchMart(query);
 				}
 			else{
-				console.log("TEST");
+				//console.log("TEST");
 				var resultIDs = [];
 				var request;
 				var allResults;
