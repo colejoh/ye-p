@@ -30,23 +30,24 @@
 						<input id="field" type="text" name="q" placeholder="business name"> <br/>
 						<input id="type" type="hidden" name="type" value="business"></input>
 								<div class="btn-grp">
-								
-
-
 									<ul>
-											<li class="butn" onclick="businessName()">
+											<li class="butn selected" id="businessButton" onclick="businessName()">
 											<script>
 											function businessName() {
 												document.getElementById("field").placeholder = "business name"
 												document.getElementById("type").value="business";
+												$("#productButton").removeClass('selected');
+												$("#businessButton").addClass('selected');
 											}
 											</script>
 											Business</li>
-											<li class="butn" id="product" onclick="productName()">
+											<li class="butn" id="productButton" onclick="productName()">
 												<script>
 												function productName() {
 													document.getElementById("field").placeholder = "product name"
 													document.getElementById("type").value="product";
+													$("#productButton").addClass('selected');
+													$("#businessButton").removeClass('selected');
 												}
 											  </script>
 												Product</li>
