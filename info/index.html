@@ -20,10 +20,10 @@
 		</div>
 			<script>
 			var url = window.location.search.substring(1);
-			var type = url.substring(url.indexOf("&type=")+6,url.indexOf("&s="));
+			var type = url.substring(url.indexOf("&type=")+6,url.length);
 			if(type=="product"){
-				var scores = getReviewScores(getReviews(21805445));
-				console.log(scores[0]);
+				var id = url.substring(url.indexOf("?q=")+3,url.indexOf("&type"));
+				getReviews(id);
 			} else {
 			googleApi();
 		}
