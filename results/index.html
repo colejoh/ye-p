@@ -8,6 +8,7 @@
 		<title>ye-p</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWY8hgOqA2BCs1yEDaxf2Q71w2BsQBPnY&libraries=places"></script>
 		<script src='../script/Chart.js-master/Chart.js'></script>
 		<script src='../script/moment.js'></script>
 		<script src='../script/search.js'></script>
@@ -34,18 +35,52 @@
 
 		<div id="result_wrapper">
 			<script type="text/javascript">
-			var resultID = search();
+				var resultIDs = [];
+				var request;
 
-			var request = { placeId: resultID[0]};
-		  service = new google.maps.places.PlacesService(document.getElementById('result_wrapper'));
-		  service.getDetails(request, callback2);
-		  function callback2(place, status) {
-		    if (status == google.maps.places.PlacesServiceStatus.OK) {
-					for (i = 0; i < resultID.length; i++) {
-						console.log(resultID[i]);
+				var callback = function(place, status, test) {
+					console.log("TEST", test);
+					console.log("status", status);
+					if (status === google.maps.places.PlacesServiceStatus.OK) {
+						for (i = 0; i < resultIDs.length; i++) {
+							console.log(i);
+							console.log(resultIDs[i]);
+						}
 					}
-				}
+				};
+				var getDetails = function(resultID) {
+					console.log("test", resultID);
+					resultIDs = $.map(resultID, function(result) {
+						return result;
+					});
+					var request = {placeId: resultID[0]}
+					var service = new google.maps.places.PlacesService(document.getElementById('result_wrapper'));
+					console.log(service);
+					service.getDetails(request, callback);
+				};
 
+				resultID = search(getDetails);
+				// getDetails(resultIDs);
+				// resultId = search
+				// req
+			// function vars(){
+			// 	resultID = search();
+			// 	function getDetails(){
+			// 		request = { placeId: resultID[0]};
+			// 		service = new google.maps.places.PlacesService(document.getElementById('result_wrapper'));
+			// 		service.getDetails(request, callback2);
+			// 		function callback2(place, status) {
+			// 			console.log(status);
+			// 		  if (status == google.maps.places.PlacesServiceStatus.OK) {
+			// 				for (i = 0; i < resultID.length; i++) {
+			// 					console.log(i);
+			// 					console.log(resultID[i]);
+			// 				}
+			// 			}
+			// 		}
+			// 	}
+			// 	getDetails();
+			// }
 			</script>
 		</div>
 	</body>
