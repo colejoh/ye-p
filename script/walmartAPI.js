@@ -5,7 +5,7 @@ $.ajax({
   url:"http://api.walmartlabs.com/v1/search?apiKey=" + apiKey + "&query=" + item
 }).done(function(response){
   // Anything within this function will be called AFTER the ajax call comes back
-  getItems(response);
+  console.log(getItems(response));
 });
 //console.log($.getJSON("http://api.walmartlabs.com/v1/search?apiKey=" + apiKey + "&query=" + item).responseJSON.start);
 }
@@ -33,5 +33,5 @@ getReviewDates = function(Reviews) {
 }
 
 getItems = function(data){
-  console.log(data.items);
+  return(data.items);
 }
