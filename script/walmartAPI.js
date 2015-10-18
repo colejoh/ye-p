@@ -1,6 +1,6 @@
 var apiKey = "vkxyfy6zmd4ddfg5ve6asw6a";
 search = function(item){
-  var search = $.getJSON("http://api.walmartlabs.com/v1/search?apiKey=" + apiKey + "query=" + item);
+  var search = $.getJSON("http://api.walmartlabs.com/v1/search?apiKey=" + apiKey + "query=" + toString(item);
   return(search.items);
 }
 getIds = function(items){
