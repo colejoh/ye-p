@@ -10,6 +10,7 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 		<script src='../script/Chart.js-master/Chart.js'></script>
 		<script src='../script/moment.js'></script>
+		<script src='../script/search.js'></script>
 		<link rel="stylesheet" href="../css/info-1.css">
 
 	</head>
@@ -22,7 +23,7 @@
 							<div class="branding">ye-p.</div>
 					</div>
 					<div class="col-md-9 col-lg-9">
-						<form class="navbar-form s-bar-total" role="search">
+						<form class="navbar-form s-bar-total" role="search" method="get" action="index.html">
 										<input type="text" class="s-bar" placeholder="Search">
 										<input class="btn btn-default" type="submit" value="Search">
 							</form>
@@ -33,12 +34,17 @@
 
 		<div id="result_wrapper">
 			<script type="text/javascript">
-				var xml = "https://maps.googleapis.com/maps/api/place/textsearch/xml?query=restaurants+in+Sydney&key=AIzaSyCWY8hgOqA2BCs1yEDaxf2Q71w2BsQBPnY";
-				xmlDoc = $.parseXML(xml),
-    		$xml = $( xmlDoc );
-    		$($xml).each(function(){
-       	alert($(this).find("Page[Name]>controls>name").text());
-     		});
+			var resultID = search();
+
+			var request = { placeId: resultID[0]};
+		  service = new google.maps.places.PlacesService(document.getElementById('result_wrapper'));
+		  service.getDetails(request, callback2);
+		  function callback2(place, status) {
+		    if (status == google.maps.places.PlacesServiceStatus.OK) {
+					for (i = 0; i < resultID.length; i++) {
+						console.log(resultID[i]);
+					}
+				}
 
 			</script>
 		</div>
