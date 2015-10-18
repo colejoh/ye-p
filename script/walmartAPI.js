@@ -1,6 +1,7 @@
 var apiKey = "vkxyfy6zmd4ddfg5ve6asw6a";
 var reviewScores=[];
 var reviewDates=[];
+var modelNumber;
 searchMart = function(item){
 //var data = $.getJSON("http://api.walmartlabs.com/v1/search?apiKey=" + apiKey + "&query=" + item);
 $.ajax({
@@ -119,5 +120,6 @@ setInfo = function(id){
     $(".bus-name").text(response.name);
     $(".bus-rating").text(response.customerRating);
     $("#reviewnum").text(response.numReviews);
+    modelNumber = response.modelNum;
   })
 }
