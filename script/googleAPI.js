@@ -46,12 +46,70 @@ for(i = 0; i < n.length; i++){
       while(n < place.reviews.length){
         if(n<=4){
           ratings[n] = place.reviews[n].rating;
-          dateOfReview[n] = moment.unix(place.reviews[n].time).format("MM/DD/YYYY");
+          dateOfReview[n] = place.reviews[n].time;
+
+          //dateOfReview[n] = moment.unix(place.reviews[n].time).format("MM/DD/YYYY");
         }else {
           ratings[n] = n;
         }
         n++;
       }
+      //sorting array
+      var dateHolder;
+      var ratingHolder
+      for (i = 0; i < dateOfReview.length; i++) {
+        for (j = 1; j < i; j++) {
+          if(dateOfReview[j] < dateOfReview[i]) {
+            dateHolder = dateOfReview[i];
+            dateOfReview[i] = dateOfReview[j];
+            dateOfReview[j] = dateHolder;
+
+            ratingHolder = ratings[i];
+            ratings[i] = ratings[j];
+            ratings[j] = ratingHolder;
+          }
+        }
+      }
+      //unix to date
+      for (i = 0; i < dateOfReview.length; i++) {
+        dateOfReview[i] = moment.unix(dateOfReview[i]).format("MM/DD/YYYY");
+      }
+
+      //reverse arrays
+      ratings.reverse();
+      dateOfReview.reverse();
+
+      //adding vales to fix scale
+      ratings[5] = 0;
+      ratings[6] = 5;
+
+      //Average over last 5
+      var avg = 0;
+      for (i = 0; i < ratings.length; i++) {
+        avg += ratings[i];
+      }
+      avg /= ratings.length;
+      avg = avg.toFixed(2);
+
+      //percent difference
+      var totalRating = $(".bus-rating").text();
+      var timesDifference = avg / totalRating;
+      var percentChange = timesDifference * 100;
+      var percentChange = percentChange.toFixed(2);
+
+      if(percentChange < 50) {
+        $("#lastFive").text("Over the las 5 reviews, " + place.name + " has declined. Their rating is " + percentChange + "% of what it used to be.")
+      } else if (percentChange >= 50 && percentChange < 100) {
+        $("#lastFive").text(place.name + " is beginning to decline. Their average review has gone down " + percentChange + "%.");
+      } else if (percentChange >= 100 && percentChange < 150) {
+        $("#lastFive").text(place.name + " has been making a turn for the better. Their average review has gone up " + percentChange + "%.");
+      } else {
+        $("#lastFive").text(place.name + " is doing very well recently. Their average review has gone up " + percentChange + "%.");
+      }
+
+      //populating
+
+      //GRAPH
       var lineChartData = {
         labels : dateOfReview,
         datasets : [

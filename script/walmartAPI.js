@@ -73,10 +73,10 @@ getScores = function(response, callback2){
      callback2 = function(response, callback3){
        console.log("t");
        for(i = 0; i<response.length;i++) {
-         reviewDates[i] = response[i].submissionTime;
+         reviewDates[i] = (response[i].submissionTime).substring(0,9);
        }
           callback3(response);
-       }
+      }
        callback2(response, callback3);
 }
 getReviewScores = function(data) {

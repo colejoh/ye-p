@@ -167,3 +167,17 @@ footer {
 		overflow: hidden;
 	}
 }
+
+@media screen and (max-width: 612px){
+	.middle{
+		width: 90%;
+		overflow: hidden;
+	}
+	.frm-wrapper{
+		width: 90%;
+		margin: 0 auto;
+	}
+	#field{
+		width: 90%;
+	}
+}
