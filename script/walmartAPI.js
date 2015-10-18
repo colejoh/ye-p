@@ -13,14 +13,25 @@ function walmartApi(){
     console.log(n);
     return n;
   }
-  function findProductId(n) {
-    $.getJSON("http://api.walmartlabs.com/v1/search?apiKey=" + apiKey + "&query=" + urlFormat(), {
-    });
+  function findProductIds(n) {
+    $.getJSON("http://api.walmartlabs.com/v1/search?apiKey=" + apiKey + "&query=" + urlFormat, callback;
       var results = [];
-      function callback() {
-
+      function callback(items) {
+        for (i=0; i< items.length; i++){
+          results [i] = items[i].itemId;
+          console.log(results[i]);
+        }
       }
-
+      return results;
   }
-
+  function getReviews(itemId){
+    $.getJSON("http://api.walmartlabs.com/v1/reviews/" + itemID + "?apiKey=" + apiKey + "&format=json", callback);
+    var reviewData = [];
+    callback(reviews){
+      for(i=0; i<reviews.length; i++){
+        reviewData[i] = {reviews.overallRating.rating, reviews.submissionTime};
+    }
+    return reviewData;
+    }
+  }
 }
