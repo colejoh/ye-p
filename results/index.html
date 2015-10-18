@@ -34,9 +34,11 @@
 		<div id="result_wrapper">
 			<script type="text/javascript">
 				var xml = "https://maps.googleapis.com/maps/api/place/textsearch/xml?query=restaurants+in+Sydney&key=AIzaSyCWY8hgOqA2BCs1yEDaxf2Q71w2BsQBPnY";
-				var parser = new DOMParser();
-    		xmlDoc = parser.parseFromString(xml,"text/xml");
-				console.log(xmlDoc.getElementsByTagName("name")[0].childNodes[0].nodeValue);
+				xmlDoc = $.parseXML(xml),
+    		$xml = $( xmlDoc );
+    		$($xml).each(function(){
+       	alert($(this).find("Page[Name]>controls>name").text());
+     		});
 
 			</script>
 		</div>

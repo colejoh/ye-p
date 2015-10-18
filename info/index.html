@@ -1,54 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Ye-p Info Page</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	<script src='../script/Chart.js-master/Chart.js'></script>
-	<script src='../script/moment.js'></script>
-	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWY8hgOqA2BCs1yEDaxf2Q71w2BsQBPnY&libraries=places"></script>
-	<script type="text/javascript" src="../script/googleAPI.js"></script>
+	<head>
+		<meta charset="UTF-8">
+		<title>Ye-p Info Page</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script src='../script/Chart.js-master/Chart.js'></script>
+		<script src='../script/moment.js'></script>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWY8hgOqA2BCs1yEDaxf2Q71w2BsQBPnY&libraries=places"></script>
+		<script type="text/javascript" src="../script/googleAPI.js"></script>
 
-	</script>"
-	<link rel="stylesheet" href="../css/info-1.css">
-</head>
-<body>
-	<div id="poop">
-	</div>
-		<script>
-		googleApi();
 		</script>
-	</div>
+		<link rel="stylesheet" href="../css/info-1.css">
+	</head>
+	<body>
+		<div id="poop">
+		</div>
+			<script>
+			googleApi();
+			</script>
+		</div>
 
-	<div class="navbar navbar-default">
-		<div class="container-fluid">
-			<div class="row">
+		<div class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="row">
 
 				<div class="col-md-3 col-lg-3 cust">
 						<div class="branding"><a href="../index.html">ye-p.</a></div>
 				</div>
+					<div class="col-md-3 col-lg-3 cust">
+							<div class="branding">ye-p.</div>
+					</div>
 
-				<div class="col-md-9 col-lg-9">
-					<form class="navbar-form s-bar-total" role="search">
-				          <input type="text" class="s-bar" placeholder="Search">
-				          <input class="btn btn-default" type="submit" value="Search">
-				    </form>
-			    </div>
+					<div class="col-md-9 col-lg-9">
+						<form class="navbar-form s-bar-total" role="search" action="index.html" method="GET">
+					          <input type="text" class="s-bar" placeholder="Search" name="q">
+					          <input class="btn btn-default" type="submit" value="Search" name="s">
+					    </form>
+				    </div>
+				</div>
 			</div>
 		</div>
-	</div>
 
-	<div class="graph">
-		<canvas id="canvas" height="50"></canvas>
+		<div class="graph">
+			<canvas id="canvas" height="50"></canvas>
 
-		<script>
+			<script>
 
-		</script>
-	</div>
-
-	<div class="bus-archetype">
-		<div class="container">
+			</script>
+		</div>
 
 			<div class="row">
 				<div class="col-md-12 col-lg-12">
@@ -59,45 +59,53 @@
 						<div class="col-md-6 col-lg-6">
 							<div class="bus-rating"></div>
 							<div class="reviews">Out of <div id="reviewnum"></div> reviews</div><!-- call number of reviews here -->
+
+		<div class="bus-archetype">
+			<div class="container">
+
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<div class="row">
+							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+								<div class="bus-name"></div>
+							</div>
+							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+								<div class="bus-rating"></div>
+								<div class="reviews">Out of <div id="reviewnum"></div> reviews</div><!-- call number of reviews here -->
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 
-			<hr class="break">
+				<hr class="break">
 
 
-		<div class="container">
-			<div class="row">
+			<div class="container">
+				<div class="row">
 
-				<div class="col-md-6 col-lg-6">
-						<div class="info ul">Info</div>
-						<p class="placetext">
-							<h5>Address: <div id="address" style="font-weight: 200;"></div></h5>
-							<h5>Phone: <div id="phone" style="font-weight: 200;"></div></h5>
-							<h5>Hours:
-								<div id="monday" style="font-weight: 200"></div>
-								<div id="tuesday" style="font-weight: 200"></div>
-								<div id="wednesday" style="font-weight: 200"></div>
-								<div id="thursday" style="font-weight: 200"></div>
-								<div id="friday" style="font-weight: 200"></div>
-								<div id="saturday" style="font-weight: 200"></div>
-								<div id="sunday" style="font-weight: 200"></div>
-							</h5>
-						</p>
+					<div class="col-md-6 col-lg-6">
+							<div class="info ul">Info</div>
+							<p class="placetext">
+								<h5>Address: <div id="address" style="font-weight: 200;"></div></h5>
+								<h5>Phone: <div id="phone" style="font-weight: 200;"></div></h5>
+								<h5>Hours:
+									<div id="monday" style="font-weight: 200"></div>
+									<div id="tuesday" style="font-weight: 200"></div>
+									<div id="wednesday" style="font-weight: 200"></div>
+									<div id="thursday" style="font-weight: 200"></div>
+									<div id="friday" style="font-weight: 200"></div>
+									<div id="saturday" style="font-weight: 200"></div>
+									<div id="sunday" style="font-weight: 200"></div>
+								</h5>
+							</p>
+					</div>
+					<div class="col-md-6 col-lg-6">
+							<div class="data-a ul">Data Analysis</div>
+								<div id="compare"></div>
+					</div>
 				</div>
-
-				<div class="col-md-6 col-lg-6">
-						<div class="data-a ul">Data Analysis</div>
-							<div id="compare"></div>
-				</div>
-
 			</div>
 		</div>
-
-
-	</div>
-
-</body>
+	</body>
 </html>
