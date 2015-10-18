@@ -1,9 +1,9 @@
 function search(cb) {
   service = new google.maps.places.PlacesService(document.getElementById('result_wrapper'));
   var coordinates = getLonLat();
-  console.log(coordinates);
+  //console.log(coordinates);
   var query = readGet();
-  console.log(query);
+  //console.log(query);
   var resultIDArray = {};
 
   service.nearbySearch({
@@ -13,9 +13,9 @@ function search(cb) {
   }, callback1);
 
   function callback1(place, status) {
-    console.log(status);
+    //console.log(status);
     if (status == google.maps.places.PlacesServiceStatus.OK) {
-      console.log(place[0].place_id);
+      //console.log(place[0].place_id);
       for (i = 0; i < place.length; i++) {
         resultIDArray[i] = place[i].place_id;
         //if(i >= 10) break label;
