@@ -40,12 +40,12 @@ $.ajax({
   url:"http://api.walmartlabs.com/v1/reviews/" + ID + "?apiKey=" + apiKey
 }).done(function(response){
     var reviews = getReviewsTable(response);
-    console.log(reviews);
+    console.log(response);
     getScores(reviews);
 });
 }
 getScores = function(response, callback2){
-      console.log(response);
+      console.log(response.length);
      for(i = 0; i<response.length;i++) {
        reviewScores[i] = response[i].overallRating.rating;
      }
@@ -91,9 +91,9 @@ getReviewScores = function(data) {
 //   return(dates);
 // }
 //
-// getItems = function(data){
-//   return(data.items);
-// }
+getItems = function(data){
+   return(data.items);
+}
 
 getReviewsTable = function(data){
  return(data.reviews);
