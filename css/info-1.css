@@ -35,6 +35,11 @@ li{
 	transition: .2s;
 }
 
+.selected{
+	background-color: #E7E9EE;
+	color: #E3285A;
+}
+
 .prodct{
 	position: relative;
 	left: 2px;
