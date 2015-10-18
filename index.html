@@ -20,14 +20,23 @@
 					<div id="tagline">A real analysis of consumer reviews</div>
 					<form method="GET" action="results/index.html">
 						<input id="field" type="text" name="q" placeholder="business name"> <br/>
-
+						<input id="type" type="hidden" name="type"></input>
 								<div class="btn-grp">
 									<ul>
-										<a href="?business">
-											<li class="butn">Business</li>
-										</a><a href="?products">
-											<li class="butn" id="product">Product</li>
-										</a>
+											<li class="butn" onclick="businessName()">
+											<script>
+											function businessName() {
+												document.getElementById("field").placeholder = "business name"
+											}
+											</script>
+											Business</li>
+											<li class="butn" id="product" onclick="productName()">
+												<script>
+												function productName() {
+													document.getElementById("field").placeholder = "product name"
+												}
+											  </script>
+												Product</li>
 									</ul>
 								</div>
 
