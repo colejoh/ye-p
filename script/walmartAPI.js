@@ -1,7 +1,13 @@
 var apiKey = "vkxyfy6zmd4ddfg5ve6asw6a";
 searchMart = function(item){
-  var search = $.getJSON("http://api.walmartlabs.com/v1/search?apiKey=" + apiKey + "&query=" + item);
-  return(search.items);
+//var data = $.getJSON("http://api.walmartlabs.com/v1/search?apiKey=" + apiKey + "&query=" + item);
+$.ajax({
+  url:"http://api.walmartlabs.com/v1/search?apiKey=" + apiKey + "&query=" + item
+}).done(function(response){
+  // Anything within this function will be called AFTER the ajax call comes back
+  getItems(response);
+});
+//console.log($.getJSON("http://api.walmartlabs.com/v1/search?apiKey=" + apiKey + "&query=" + item).responseJSON.start);
 }
 getIds = function(items){
   var IDs = [];
@@ -24,4 +30,8 @@ getReviewDates = function(Reviews) {
   for(i = 0; i<reviews.length;i++) {
     dates[i] = reviews[i].submissionTime;
   }
+}
+
+getItems = function(data){
+  console.log(data.items);
 }
