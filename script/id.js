@@ -15,7 +15,7 @@ function returnNameAddress(passedPlaceID){
       console.log(place.name);
       nameAddressArray[1] = place.formatted_address;
       console.log(nameAddressArray);
-      html = html + "<div id='result'><div class='name'>" + nameAddressArray[0] + "</div><div class='address'>" + nameAddressArray[1] + "</div></div>";
+      html = html + "<div class='container'><div class='row'><div class='name'>" + nameAddressArray[0] + "</div><div class='address'>" + nameAddressArray[1] + "</div></div></div><hr class='breaks'/>";
       $("#main_wrapper").html(html.substring(9));
 	  }
 	}
@@ -24,7 +24,7 @@ function returnNameAddress(passedPlaceID){
 function formattedHTML(array) {
   var name = array[0];
   var address = array[1];
-  var html = "<div id='result'><div class='name'>" + name + "</div><div class='address'>" + address + "</div></div>";
+  var html = "<div class='container'><div class='row'><div class='name'>" + name + "</div><div class='address'>" + address + "</div></div></div><hr class='break'/>";
   return html;
 }
 
