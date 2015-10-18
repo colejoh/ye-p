@@ -17,7 +17,7 @@ a:hover {
     height: 100%;
     width: 100%;
 
-    background: url(../img/chart.svg);
+    /*background: url(../img/chart.svg);*/
     background-position: center bottom;
     background-repeat: no-repeat;
 }
@@ -57,13 +57,13 @@ a:hover {
 	font-family: 'Helvetica Neue', sans-serif;
 }
 #submit_wrapper {
-	width: 120px;
+	width: 182px;
 	margin-left: auto;
 	margin-right: auto;
 }
 #submit {
-	width: 120px;
-	height: 40px;
+	width: 182px;
+	height: 60px;
 	border: none;
 	color: #E7E9EE;
 	background: #31193A;
@@ -74,7 +74,7 @@ a:hover {
 	margin-right: auto;
 
 	font-family: 'Helvetica Neue', sans-serif;
-	font-size: 14px;
+	font-size: 17px;
 	font-weight: 200;
 
 	-webkit-transition:.2s;

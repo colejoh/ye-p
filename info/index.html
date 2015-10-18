@@ -23,8 +23,16 @@
 				var id = url.substring(url.indexOf("?q=")+3,url.indexOf("&type"));
 				getReviews(id);
 			} else {
-			googleApi();
-		}
+				googleApi();
+			}
+			$(document).ready(function() {
+				if (type == "product") {
+					$("#productInfo").show();
+
+				} else {
+					$("#businessInfo").show();
+				}
+			});
 			</script>
 		</div>
 		<!--nav bar-->
@@ -97,7 +105,8 @@
 			<div class="container">
 				<div class="row">
 
-					<div class="col-md-6 col-lg-6">
+					<!--Business Tags-->
+					<div class="col-md-6 col-lg-6" id="businessInfo">
 							<div class="info ul">Info</div>
 							<p class="placetext">
 								<h5>Address: <div id="address" style="font-weight: 200;"></div></h5>
@@ -113,6 +122,15 @@
 								</h5>
 							</p>
 					</div>
+					<!--Product Tags-->
+					<div class="col-md-6 col-lg-6" id="productInfo">
+							<div class="info ul">Info</div>
+							<p class="placetext">
+								<h5>Sample:</h5>
+							</p>
+					</div>
+
+
 					<div class="col-md-6 col-lg-6">
 							<div class="data-a ul">Data Analysis</div>
 							<div id="lastFive"></div>
@@ -120,8 +138,5 @@
 				</div>
 			</div>
 		</div>
-		<footer>
-			ye-p
-		</footer>
 	</body>
 </html>
