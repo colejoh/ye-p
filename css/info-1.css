@@ -36,7 +36,7 @@ li{
 }
 
 a > .butn:hover{
-	background-color: transparent;
+	background: #E7E9EE;
 	color: #E3285A;
 }
 
