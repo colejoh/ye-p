@@ -9,6 +9,8 @@
 		<script src='../script/moment.js'></script>
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWY8hgOqA2BCs1yEDaxf2Q71w2BsQBPnY&libraries=places"></script>
 		<script type="text/javascript" src="../script/googleAPI.js"></script>
+		<script type="text/javascript" src="../script/walmartAPI.js"></script>
+
 
 		</script>
 		<link rel="stylesheet" href="../css/info-1.css">
@@ -17,7 +19,13 @@
 		<div id="poop">
 		</div>
 			<script>
-			googleApi();
+			var url = window.location.search.substring(1);
+			var type = url.substring(url.indexOf("&type=")+6,url.indexOf("&s="));
+			console.log(type);
+			if(type="product"){
+				
+			}
+			//googleApi();
 			</script>
 		</div>
 
