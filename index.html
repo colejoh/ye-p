@@ -9,6 +9,7 @@
 		<link rel="stylesheet" href="css/style.css">
 		<script type='text/javascript' src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 		<link rel="stylesheet" href="css/animate.css">
+		<link rel="stylesheet" href="css/info-1.css">
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWY8hgOqA2BCs1yEDaxf2Q71w2BsQBPnY&libraries=places"></script>
 	</head>
 	<body>
@@ -19,6 +20,17 @@
 					<div id="tagline">A real analysis of consumer reviews</div>
 					<form method="GET" action="results/index.html">
 						<input id="field" type="text" name="q" placeholder="business name"> <br/>
+
+								<div class="btn-grp">
+									<ul>
+										<a href="#">
+											<li class="butn">Business</li>
+										</a><a href="#">
+											<li class="butn" id="product">Product</li>
+										</a>
+									</ul>
+								</div>
+
 						<div id="submit_wrapper"><input id="submit" type="submit" name="s" value="search"></div>
 					</form>
 				</div>
