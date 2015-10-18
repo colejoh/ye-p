@@ -13,26 +13,14 @@ var longitude = Number(sessionStorage.longitude);
 var coordinates = {lat: latitude, lng: longitude};
 var service = new google.maps.places.PlacesService(document.getElementById('poop'));
 var url = window.location.search.substring(1);
-var n = url.substring(2, url.indexOf("&s"));
+var n = url.substring(url.indexOf("&q")+3, url.length);
 for(i = 0; i < n.length; i++){
   if(n.charAt(i) == '+')
   {
     n = n.substring(0,i) + " " + n.substring(i+1, n.length);
   }
 }
-console.log(n);
-service.nearbySearch({
-  location: coordinates,
-  radius: 5000,
-  name: n
-}, callback1);
-function callback1(place, status) {
-  console.log(status);
-  if (status == google.maps.places.PlacesServiceStatus.OK) {
-    console.log(place[0].place_id);
-    id = place[0].place_id;
-  }
-  var request = {placeId: id};
+  var request = {placeId: n};
   service = new google.maps.places.PlacesService(document.getElementById('poop'));
   service.getDetails(request, callback2);
   function callback2(place, status) {
@@ -90,5 +78,4 @@ function callback1(place, status) {
 
     }
   }
-}
 }

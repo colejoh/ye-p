@@ -9,7 +9,8 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWY8hgOqA2BCs1yEDaxf2Q71w2BsQBPnY&libraries=places"></script>
-		<script src="../script/id.js" type="text/javascript">
+		<script src="../script/walmartAPI.js" type="text/javascript"></script>
+		<script src="../script/id.js" type="text/javascript"></script>
 		<script src='../script/Chart.js-master/Chart.js'></script>
 		<script src='../script/moment.js'></script>
 		<script src='../script/search.js'></script>
@@ -54,6 +55,17 @@
 
 		<div id="result_wrapper">
 			<script type="text/javascript">
+			var url = window.location.search.substring(1);
+			var type = url.substring(url.indexOf("&type=")+6,url.indexOf("&s="));
+			console.log(type);
+			if(type=="product"){
+				var resultIDs = [];
+				var query = url.substring(url.indexOf("&q=")+3,url.indexOf("&type="));
+				console.log(query);
+				console.log(searchMart(query));
+				}
+			else{
+				console.log("TEST");
 				var resultIDs = [];
 				var request;
 				var allResults;
@@ -78,7 +90,7 @@
 					service.getDetails(request, callback);
 				};
 				resultID = search(getDetails);
-
+			}
 			</script>
 		</div>
 		<div id="main_wrapper"></div>
