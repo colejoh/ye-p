@@ -15,9 +15,7 @@ function returnNameAddress(passedPlaceID){
       console.log(place.name);
       nameAddressArray[1] = place.formatted_address;
       console.log(nameAddressArray);
-      html = html + "<div class='container'><div class='row'><div class='name'>" + nameAddressArray[0] + "</div><div class='address'>" + nameAddressArray[1] + "</div></div></div><hr class='breaks'/>";
-
-      html = html + "<a href='../info/index.html?q=" + passedPlaceID + "'><div id='result'><div class='name'>" + nameAddressArray[0] + "</div><div class='address'>" + nameAddressArray[1] + "</div></div></a>";
+      html = html + "<a href='../info/index.html?q=" + "<div class='container'><div class='row'><div class='name'>" + nameAddressArray[0] + "</div><div class='address'>" + nameAddressArray[1] + "</div></div></div></a><hr class='breaks'/>";
       $("#main_wrapper").html(html.substring(9));
 	  }
 	}
