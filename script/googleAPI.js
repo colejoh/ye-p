@@ -13,13 +13,8 @@ var longitude = Number(sessionStorage.longitude);
 var coordinates = {lat: latitude, lng: longitude};
 var service = new google.maps.places.PlacesService(document.getElementById('poop'));
 var url = window.location.search.substring(1);
-var n = url.substring(2, url.indexOf("&s"));
-for(i = 0; i < n.length; i++){
-  if(n.charAt(i) == '+')
-  {
-    n = n.substring(0,i) + " " + n.substring(i+1, n.length);
-  }
-}
+var n = url.substring(url.indexOf("="));
+n = "test";
 console.log(n);
 service.nearbySearch({
   location: coordinates,
