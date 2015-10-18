@@ -34,6 +34,9 @@ li{
 	border: 2px solid #E3285A;
 	transition: .2s;
 }
+.butn:hover {
+	pointer: cursor;
+}
 .selected{
 	background-color: #E52358;
 	color: #fff;
