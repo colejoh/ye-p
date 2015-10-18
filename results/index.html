@@ -27,12 +27,28 @@
 							<div class="branding">ye-p.</div>
 					</div>
 					<div class="col-md-9 col-lg-9">
-						<form class="navbar-form s-bar-total" role="search" method="get" action="index.html">
-										<input type="text" class="s-bar" placeholder="Search" name="q">
-										<input type="text" name="type">
-										<input class="btn btn-default" type="submit" value="Search" name="s">
-							</form>
-						</div>
+						<form class="navbar-form s-bar-total" role="search" action="index.html" method="GET">
+					  	<input type="text" id="field" class="s-bar" placeholder="Search" name="q">
+					    <input id="type" type="hidden" name="type" value="business"></input>
+					    <input class="btn btn-default" type="submit" value="Search" name="s">
+					    <div class="btn btn-default" onclick="businessName()">Business
+							<script>
+								function businessName() {
+									document.getElementById("field").placeholder = "business name"
+									document.getElementById("type").value="business";
+								}
+							</script>
+					    </div>
+					  	<div class="btn btn-default" onclick="productName()">Product
+								<script>
+									function productName() {
+										document.getElementById("field").placeholder = "product name"
+										document.getElementById("type").value="product";
+									}
+								</script>
+					    </div>
+					  </form>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -42,13 +58,14 @@
 			var url = window.location.search.substring(1);
 			var type = url.substring(url.indexOf("&type=")+6,url.indexOf("&s="));
 			console.log(type);
-			if(type="product"){
+			if(type=="product"){
 				var resultIDs = [];
 				var query = url.substring(url.indexOf("&q=")+3,url.indexOf("&type="));
-				resultIDs=getIds(searchMart(query));
-				console.log(resultIDs);
-			}
-			else
+				console.log(query);
+				console.log(searchMart(query));
+				}
+			else{
+				console.log("TEST");
 				var resultIDs = [];
 				var request;
 				var allResults;
@@ -73,7 +90,7 @@
 					service.getDetails(request, callback);
 				};
 				resultID = search(getDetails);
-
+			}
 			</script>
 		</div>
 		<div id="main_wrapper"></div>

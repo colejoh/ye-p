@@ -13,6 +13,7 @@ var longitude = Number(sessionStorage.longitude);
 var coordinates = {lat: latitude, lng: longitude};
 var service = new google.maps.places.PlacesService(document.getElementById('poop'));
 var url = window.location.search.substring(1);
+<<<<<<< HEAD
 var n = url.substring(url.indexOf("="));
 n = "test";
 console.log(n);
@@ -28,6 +29,16 @@ function callback1(place, status) {
     id = place[0].place_id;
   }
   var request = {placeId: id};
+=======
+var n = url.substring(url.indexOf("&q")+3, url.length);
+for(i = 0; i < n.length; i++){
+  if(n.charAt(i) == '+')
+  {
+    n = n.substring(0,i) + " " + n.substring(i+1, n.length);
+  }
+}
+  var request = {placeId: n};
+>>>>>>> 9115feff1a3821c642b01492b55aa5dc3be3398b
   service = new google.maps.places.PlacesService(document.getElementById('poop'));
   service.getDetails(request, callback2);
   function callback2(place, status) {
@@ -85,5 +96,4 @@ function callback1(place, status) {
 
     }
   }
-}
 }
