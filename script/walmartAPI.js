@@ -52,6 +52,9 @@ getScores = function(response, callback2){
      callback3 = function(response){
         console.log(reviewScores);
         console.log(reviewDates);
+        var length = reviewScores.length;
+        reviewScores[5] = 0;
+        reviewScores[6] = 5;
         var lineChartData = {
          labels : reviewDates,
           datasets : [

@@ -184,6 +184,12 @@ footer {
 	height: 60px;
 	border: #f5f5f5;
 }
+#businessInfo {
+	display: none;
+}
+#productInfo {
+	display: none;
+}
 
 @media screen and (min-width: 901px){
 	.graph{
