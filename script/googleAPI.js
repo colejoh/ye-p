@@ -46,12 +46,43 @@ for(i = 0; i < n.length; i++){
       while(n < place.reviews.length){
         if(n<=4){
           ratings[n] = place.reviews[n].rating;
-          dateOfReview[n] = moment.unix(place.reviews[n].time).format("MM/DD/YYYY");
+          dateOfReview[n] = place.reviews[n].time;
+
+          //dateOfReview[n] = moment.unix(place.reviews[n].time).format("MM/DD/YYYY");
         }else {
           ratings[n] = n;
         }
         n++;
       }
+      //sorting array
+      var dateHolder;
+      var ratingHolder
+      for (i = 0; i < dateOfReview.length; i++) {
+        for (j = 1; j < i; j++) {
+          if(dateOfReview[j] < dateOfReview[i]) {
+            dateHolder = dateOfReview[i];
+            dateOfReview[i] = dateOfReview[j];
+            dateOfReview[j] = dateHolder;
+
+            ratingHolder = ratings[i];
+            ratings[i] = ratings[j];
+            ratings[j] = ratingHolder;
+          }
+        }
+      }
+      //unix to date
+      for (i = 0; i < dateOfReview.length; i++) {
+        dateOfReview[i] = moment.unix(dateOfReview[i]).format("MM/DD/YYYY");
+      }
+
+      //reverse arrays
+      ratings.reverse();
+      dateOfReview.reverse();
+
+      //adding vales to fix scale
+      ratings[5] = 0;
+      ratings[6] = 5;
+
       var lineChartData = {
         labels : dateOfReview,
         datasets : [

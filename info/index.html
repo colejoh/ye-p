@@ -21,7 +21,6 @@
 			<script>
 			var url = window.location.search.substring(1);
 			var type = url.substring(url.indexOf("&type=")+6,url.indexOf("&s="));
-			console.log(type);
 			if(type=="product"){
 				var scores = getReviewScores(getReviews(21805445));
 				console.log(scores[0]);
