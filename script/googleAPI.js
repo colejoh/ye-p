@@ -100,11 +100,11 @@ for(i = 0; i < n.length; i++){
       if(percentChange < 50) {
         $("#lastFive").text("Over the las 5 reviews, " + place.name + " has declined. Their rating is " + percentChange + "% of what it used to be.")
       } else if (percentChange >= 50 && percentChange < 100) {
-        $("#lastFive").text(place.name + " is beginning to decline. Their average review has gone down " + percentChange + "%.");
+        $("#lastFive").text(place.name + " is beginning to decline. Their average review has gone down " + (100 - percentChange).toFixed(2) + "%.");
       } else if (percentChange >= 100 && percentChange < 150) {
-        $("#lastFive").text(place.name + " has been making a turn for the better. Their average review has gone up " + percentChange + "%.");
+        $("#lastFive").text(place.name + " has been making a turn for the better. Their average review has gone up " + (percentChange - 100).toFixed(2) + "%.");
       } else {
-        $("#lastFive").text(place.name + " is doing very well recently. Their average review has gone up " + percentChange + "%.");
+        $("#lastFive").text(place.name + " is doing very well recently. Their average review has gone up " + (percentChange - 100).toFixed(2) + "%.");
       }
 
       //populating
