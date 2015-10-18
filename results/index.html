@@ -9,6 +9,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWY8hgOqA2BCs1yEDaxf2Q71w2BsQBPnY&libraries=places"></script>
+		<script src="../script/id.js" type="text/javascript">
 		<script src='../script/Chart.js-master/Chart.js'></script>
 		<script src='../script/moment.js'></script>
 		<script src='../script/search.js'></script>
@@ -42,7 +43,11 @@
 					//console.log("TEST", test);
 					//console.log("status", status);
 					if (status === google.maps.places.PlacesServiceStatus.OK) {
-						results();
+						var allResults = "";
+						for (i = 0; i < resultIDs.length; i++) {
+							allResults = getResults()
+						}
+						$("#main_wrapper").text("hello");
 					}
 				};
 				var getDetails = function(resultID) {
@@ -55,26 +60,10 @@
 					//console.log(service);
 					service.getDetails(request, callback);
 				};
-
 				resultID = search(getDetails);
 
-				function results() {
-					$("#main_wrapper").html(
-					for (i = 0; i < resultIDs.length; i++) {
-							"<div class='result'>"
-								+ resultIDs[i] +
-							"</div>"
-
-						console.log(i);
-						console.log(resultIDs[i]);
-					}
-				}
 			</script>
 		</div>
-		<div id="main_wrapper">
-			<div class="result">
-				
-			</div>
-		</div>
+		<div id="main_wrapper">hi</div>
 	</body>
 </html>

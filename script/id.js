@@ -1,30 +1,32 @@
-function returnNameAddress(){
+function returnNameAddress(passedPlaceID){
+  var nameAddressArray = {};
+	var request = {
+	  placeId: passedPlaceID,
+	};
+	service = new google.maps.places.PlacesService(document.getElementById('main_wrapper'));
+	service.getDetails(request, callback);
 
-var id = 0;
-var service = new google.maps.places.PlacesService(document.getElementById('result'));
-var url = window.location.search.substring(1);
-
-service.getDetails({
-  placeId: 'ChIJN1t_tDeuEmsRUsoyG83frY4',
-}, callback1);
-function callback1(place, status) {
-    if (status === google.maps.places.PlacesServiceStatus.OK) {
-      var marker = new google.maps.Marker({ position: place.geometry.location});
-    }
-  };
+	function callback(place, status) {
+	  if (status == google.maps.places.PlacesServiceStatus.OK) {
+      nameAddressArray[0] = place.name;
+      nameAddressArray[1] = place.formatted_address;
+	  }
+	}
+  return nameAddressArray;
 }
 
+function formattedHTML(array) {
+  var name = array[0];
+  var address = array[1];
 
-  console.log(status);
-  if (status == google.maps.places.PlacesServiceStatus.OK) {
-    id = place[0].place_id;
-  }
-  var request = {placeId: id};
-  service = new google.maps.places.PlacesService(document.getElementById('poop'));
-  service.getDetails(request, callback2);
-  function callback2(place, status) {
-    if (status == google.maps.places.PlacesServiceStatus.OK) {
+  var html = "<div id='result'><div class='name'>" + name + "</div><div class='address'>" + address + "</div></div>";
 
-    }
-  }
+  return html;
+}
+
+function getResults() {
+  var nameAndAddress = returnNameAddress(resultIDs[i]);
+  var html = formattedHTML(nameAndAddress);
+  var allResults = allResults + html;
+  console.log(allResults);
 }
