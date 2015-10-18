@@ -44,6 +44,7 @@ $.ajax({
 }).done(function(response){
     var reviews = getReviewsTable(response);
     console.log(response);
+    setInfo(ID);
     getScores(reviews);
 });
 }
@@ -108,4 +109,15 @@ getItems = function(data){
 
 getReviewsTable = function(data){
  return(data.reviews);
+}
+
+setInfo = function(id){
+  $.ajax({
+    url:"http://api.walmartlabs.com/v1/items/"+ id +"?apiKey=" + apiKey
+  }).done(function (response){
+    console.log(response.name);
+    $(".bus-name").text(response.name);
+    $(".bus-rating").text(response.customerRating);
+    $("#reviewnum").text(response.numReviews);
+  })
 }
