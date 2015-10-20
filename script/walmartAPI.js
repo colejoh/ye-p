@@ -5,6 +5,7 @@ var modelNumber;
 searchMart = function(item){
 //var data = $.getJSON("http://api.walmartlabs.com/v1/search?apiKey=" + apiKey + "&query=" + item);
 $.ajax({
+  dataType: jsonp,
   url:"http://api.walmartlabs.com/v1/search?apiKey=" + apiKey + "&query=" + item
 }).done(function(response){
   // Anything within this function will be called AFTER the ajax call comes back
