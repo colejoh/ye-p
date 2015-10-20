@@ -5,7 +5,7 @@ var modelNumber;
 searchMart = function(item){
 //var data = $.getJSON("http://api.walmartlabs.com/v1/search?apiKey=" + apiKey + "&query=" + item);
 $.ajax({
-  dataType: jsonp,
+  dataType: 'jsonp',
   url:"http://api.walmartlabs.com/v1/search?apiKey=" + apiKey + "&query=" + item
 }).done(function(response){
   // Anything within this function will be called AFTER the ajax call comes back
@@ -16,7 +16,9 @@ $.ajax({
     if(objectArray[i].numReviews == undefined){}
     else{
     currentHTMLValue = $("#main_wrapper").html();
+    try{
     var desc = (objectArray[i].shortDescription.substring(0, 100)) + "...";
+  }  catch (error) {}
     $("#main_wrapper").html(currentHTMLValue +
       "<a href='../info/index.html?q=" + objectArray[i].itemId + "&type=product'><div class='container'><div class='row'><div class='product-wrapper'><div class='name'>"
         + objectArray[i].name +
@@ -42,6 +44,7 @@ getIds = function(items){
 getReviews = function(ID) {
   //console.log("http://api.walmartlabs.com/v1/reviews/" + ID + "?apiKey=" + apiKey);
 $.ajax({
+  dataType: 'jsonp',
   url:"http://api.walmartlabs.com/v1/reviews/" + ID + "?apiKey=" + apiKey
 }).done(function(response){
     var reviews = getReviewsTable(response);
@@ -115,6 +118,7 @@ getReviewsTable = function(data){
 
 setInfo = function(id){
   $.ajax({
+    dataType: 'jsonp',
     url:"http://api.walmartlabs.com/v1/items/"+ id +"?apiKey=" + apiKey
   }).done(function (response){
     console.log(response.name);
