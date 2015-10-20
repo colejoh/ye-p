@@ -37,7 +37,10 @@ function readGet() {
 }
 
 function getLonLat() {
-  $.getJSON("http://www.telize.com/geoip?callback=?", function(json) {
+  $.ajax({
+    dataType: 'jsonp',
+    url:"http://www.telize.com/geoip?callback=?"
+  }).done(function(json) {
     sessionStorage.latitude = json.latitude;
     sessionStorage.longitude = json.longitude;
   });

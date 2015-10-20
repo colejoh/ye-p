@@ -25,6 +25,7 @@ for(i = 0; i < n.length; i++){
   service.getDetails(request, callback2);
   function callback2(place, status) {
     if (status == google.maps.places.PlacesServiceStatus.OK) {
+      try{
       $(".bus-rating").text(place.rating);
       $(".bus-name").text(place.name);
       $("#address").text(place.formatted_address);
@@ -37,12 +38,13 @@ for(i = 0; i < n.length; i++){
       $("#friday").text(place.opening_hours.weekday_text[4]);
       $("#saturday").text(place.opening_hours.weekday_text[5]);
       $("#sunday").text(place.opening_hours.weekday_text[6]);
-
+    } catch(error){}
       //ratings array
       var ratings = [];
       //date array
       var dateOfReview = [];
       var n = 0;
+      try{
       while(n < place.reviews.length){
         if(n<=4){
           ratings[n] = place.reviews[n].rating;
@@ -54,6 +56,7 @@ for(i = 0; i < n.length; i++){
         }
         n++;
       }
+    }catch(error){}
       //sorting array
       var dateHolder;
       var ratingHolder

@@ -10,8 +10,7 @@ function returnNameAddress(passedPlaceID){
 
 	function callback(place, status) {
 	  if (status == google.maps.places.PlacesServiceStatus.OK) {
-      if(place.reviews.length == 0){
-      } else {
+      try{
       console.log(place.formatted_address);
       nameAddressArray[0] = place.name;
       console.log(place.name);
@@ -19,7 +18,7 @@ function returnNameAddress(passedPlaceID){
       console.log(nameAddressArray);
       html = html + "<a href='../info/index.html?q=" + passedPlaceID + "'<div class='container'><div class='row'><div class='name'>" + nameAddressArray[0] + "</div><div class='address'>" + nameAddressArray[1] + "</div></div></div></a><hr class='breaks'/>";
       $("#main_wrapper").html(html.substring(9));
-    }
+      } catch (error){console.log(error);}
     }
 	}
 }
