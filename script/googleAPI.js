@@ -40,6 +40,7 @@ for(i = 0; i < n.length; i++){
       $("#sunday").text(place.opening_hours.weekday_text[6]);
     } catch(error){}
       //ratings array
+      //test
       var ratings = [];
       //date array
       var dateOfReview = [];
