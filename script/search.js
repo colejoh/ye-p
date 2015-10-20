@@ -1,7 +1,8 @@
+var coordinates;
 function search(cb) {
   service = new google.maps.places.PlacesService(document.getElementById('result_wrapper'));
-  var coordinates = getLonLat();
-  //console.log(coordinates);
+  getLonLat();
+  console.log(coordinates);
   var query = readGet();
   //console.log(query);
   var resultIDArray = {};
@@ -13,7 +14,7 @@ function search(cb) {
   }, callback1);
 
   function callback1(place, status) {
-    //console.log(status);
+    console.log(place);
     if (status == google.maps.places.PlacesServiceStatus.OK) {
       //console.log(place[0].place_id);
       for (i = 0; i < place.length; i++) {
@@ -41,12 +42,10 @@ function getLonLat() {
     dataType: 'jsonp',
     url:"http://www.telize.com/geoip?callback=?"
   }).done(function(json) {
-    sessionStorage.latitude = json.latitude;
-    sessionStorage.longitude = json.longitude;
+    var latitude = Number(json.latitude);
+    var longitude = Number(json.longitude);
+    coordinates = {lat: latitude, lng: longitude};
+    console.log(coordinates);
   });
-  var latitude = Number(sessionStorage.latitude);
-  var longitude = Number(sessionStorage.longitude);
-  var coordinates = {lat: latitude, lng: longitude};
-  return coordinates;
 };
 }
