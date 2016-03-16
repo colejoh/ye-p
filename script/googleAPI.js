@@ -46,14 +46,13 @@ for(i = 0; i < n.length; i++){
       while(n < place.reviews.length){
         if(n<=4){
           ratings[n] = place.reviews[n].rating;
-          dateOfReview[n] = place.reviews[n].time;
-
-          //dateOfReview[n] = moment.unix(place.reviews[n].time).format("MM/DD/YYYY");
+          dateOfReview[n] = moment.unix(place.reviews[n].time).format("MM/DD/YYYY");
         }else {
           ratings[n] = n;
         }
         n++;
       }
+//<<<<<<< HEAD
       //sorting array
       var dateHolder;
       var ratingHolder
@@ -110,6 +109,8 @@ for(i = 0; i < n.length; i++){
       //populating
 
       //GRAPH
+//=======
+// parent of 2a06f0f... Rating sorted
       var lineChartData = {
         labels : dateOfReview,
         datasets : [

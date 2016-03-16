@@ -18,7 +18,12 @@
 		</div>
 			<script>
 			var url = window.location.search.substring(1);
-			var type = url.substring(url.indexOf("&type=")+6,url.length);
+//<<<<<<< HEAD
+//			var type = url.substring(url.indexOf("&type=")+6,url.length);
+//=======
+			var type = url.substring(url.indexOf("&type=")+6,url.indexOf("&s="));
+			console.log(type);
+//>>>>>>> parent of 2a06f0f... Rating sorted
 			if(type=="product"){
 				var id = url.substring(url.indexOf("?q=")+3,url.indexOf("&type"));
 				getReviews(id);
